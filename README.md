@@ -4,7 +4,7 @@ The proper spelling is obviouly visuali**z**ation, but then I couldn't vizualize
 
 # I likes to see things with my eyeballs
 
-gifs
+![dfs gif](/media/dfs.gif)
 
 # How to see
 
