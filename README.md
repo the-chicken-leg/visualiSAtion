@@ -8,7 +8,7 @@ The proper spelling is obviouly visuali*z*ation, but then I couldn't vizualize t
 
 ![dfs gif](/media/dfs.gif)
 
-# How-to
+# How to visualize
 
 Each subfolder is the name of a data structure or algorithm. Run the main.py file in the subfolder to watch the magic.
 
