@@ -2,11 +2,11 @@
 
 The proper spelling is obviouly visuali**z**ation, but then I couldn't vizualize the (data) **S**tructures and **A**lgorithms... get it?
 
-## I likes to see things with my eyeballs
+# I likes to see things with my eyeballs
 
 gifs
 
-## How to see
+# How to see
 
 Each subfolder has the name of a data structure or algorithm. Run the main.py file in the subfolder to watch the magic.
 
