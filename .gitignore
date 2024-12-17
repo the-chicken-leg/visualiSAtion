@@ -1,0 +1,6 @@
+.venv/
+.conda/
+.vscode/
+__pycache__/
+*.pyc
+.python-version
