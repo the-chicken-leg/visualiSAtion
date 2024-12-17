@@ -1,6 +1,5 @@
 from graphics import Window
 from dfs import DFS
-import sys
 
 def main():
     # tuneables
