@@ -1,8 +1,10 @@
-# visuali**SA**tion
+# visualiSAtion
 
-The proper spelling is obviouly visuali**z**ation, but then I couldn't vizualize the (data) **S**tructures and **A**lgorithms... get it?
+The proper spelling is obviouly visuali*z*ation, but then I couldn't vizualize the (data) *S*tructures and *A*lgorithms... get it?
 
 # I likes to see things with my eyeballs
+
+## DFS
 
 ![dfs gif](/media/dfs.gif)
 
