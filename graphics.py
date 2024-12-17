@@ -84,9 +84,6 @@ class Square:
             fill=fill_color,
         )
 
-    def lower(self):
-        self.parent.canvas.tag_lower(self)
-
 class Circle:
     def __init__(self, parent: Window, center: Point, radius: int):
         self.parent = parent
