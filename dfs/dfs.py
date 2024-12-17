@@ -74,8 +74,8 @@ class DFS:
                 return
             
             if not first_pass:
-                breadth_marker = Circle(self.parent, current_cell.center, 10)
-                breadth_marker.draw("black")
+                breadth_second_marker = Circle(self.parent, current_cell.center, 10)
+                breadth_second_marker.draw("black")
                 self.parent.redraw()
 
             direction = random.choice(list(to_search.keys()))

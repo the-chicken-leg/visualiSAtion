@@ -6,7 +6,7 @@ def main():
     window_width = 800
     window_height = 600
     cell_size = 50
-    start_i = 0
+    start_i = 1
     start_j = 0
     sleep_time = 0.1
     seed = None
