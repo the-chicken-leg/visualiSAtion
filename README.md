@@ -1,6 +1,6 @@
 # visualiSAtion
 
-The proper spelling is obviouly visuali***Z***ation, but then I couldn't vizualize the (data) ***S***tructures and ***A***lgorithms... get it?
+The proper spelling is obviously visuali***Z***ation, but then I couldn't vizualize the (data) ***S***tructures and ***A***lgorithms... get it?
 
 # I likes to see things with my eyeballs
 
