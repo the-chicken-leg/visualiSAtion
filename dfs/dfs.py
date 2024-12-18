@@ -1,8 +1,9 @@
 from graphics import *
 from cell import *
+import random
 import time
 
-class DfsNonrandom:
+class DFS:
     def __init__(self, parent: Window, cell_size: int):
         self.parent = parent
         self.cell_size = cell_size
@@ -40,10 +41,13 @@ class DfsNonrandom:
                 self.parent.redraw()
                 time.sleep(0.01)
 
-    def search(self, start_i: int, start_j: int, sleep_time: int):
+    def search(self, start_i: int, start_j: int, sleep_time: int, is_random: bool, seed):
         self.start_i = start_i
         self.start_j = start_j
         self.sleep_time = sleep_time
+        self.is_random = is_random
+        if seed is not None:
+            random.seed(seed)
         self.search_r(start_i, start_j)
 
     def search_r(self, i: int, j: int, direction: str = None):
@@ -63,30 +67,32 @@ class DfsNonrandom:
             time.sleep(self.sleep_time)
 
             neighbors = self.get_cell_neighbors(i, j)
-            to_search = self.get_to_search(neighbors)
+            to_search = {k: v for k, v in neighbors.items() if v and v.searched == False}
             if not to_search:
                 if first_pass:
                     current_cell.draw()
                     self.parent.redraw()
                 return
+            
+            if not first_pass:
+                breadth_marker = Circle(self.parent, current_cell.center, 10)
+                breadth_marker.draw("black")
+                self.parent.redraw()
 
-            direction_tuples = [
-                (i - 1, j, "top"),
-                (i, j + 1, "right"),
-                (i + 1, j, "bottom"),
-                (i, j - 1, "left"),
-            ]
+            if self.is_random:
+                direction = random.choice(list(to_search.keys()))
+            else:
+                direction = list(to_search.keys())[0]
 
-            for direction_tuple in direction_tuples:
-                if direction_tuple[2] in to_search:
-                    self.search_r(direction_tuple[0], direction_tuple[1], direction_tuple[2])
-                    to_search = self.get_to_search(neighbors)
-                    if to_search and first_pass:
-                        current_cell.draw()
-                        breadth_marker = Circle(self.parent, current_cell.center, 10)
-                        breadth_marker.draw("black")
-                        self.parent.redraw() 
-                    
+            if direction == "top":
+                self.search_r(i - 1, j, direction)
+            if direction == "right":
+                self.search_r(i, j + 1, direction)
+            if direction == "bottom":
+                self.search_r(i + 1, j, direction)
+            if direction == "left":
+                self.search_r(i, j - 1, direction)
+                
             first_pass = False
 
     def get_previous_cell(self, i: int, j: int, direction: str):
@@ -126,6 +132,3 @@ class DfsNonrandom:
             "bottom": neighbor_bottom,
             "left": neighbor_left,
         }
-    
-    def get_to_search(self, neighbors: dict):
-        return {k: v for k, v in neighbors.items() if v and v.searched == False}

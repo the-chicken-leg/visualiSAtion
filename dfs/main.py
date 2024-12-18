@@ -1,19 +1,21 @@
 from graphics import Window
-from dfs_nonrandom import DfsNonrandom
+from dfs import DFS
 
 def main():
     # tuneables
     window_width = 800
     window_height = 800
     cell_size = 50
-    start_i = 8
-    start_j = 8
+    start_i = 7
+    start_j = 7
     sleep_time = 0.05
+    is_random = True
+    seed = None
 
     window = Window(window_width, window_height)
-    cell_matrix = DfsNonrandom(window, cell_size)
+    cell_matrix = DFS(window, cell_size)
     input("Press Enter to continue")
-    cell_matrix.search(start_i, start_j, sleep_time)
+    cell_matrix.search(start_i, start_j, sleep_time, is_random, seed)
     window.wait_for_close()
 
 main()
