@@ -7,7 +7,7 @@ class Window:
         self.height = height
 
         self.root = Tk()
-        self.root.title("Super duper DFS!")
+        self.root.title("Super duper BFS!")
         # self.root.eval('tk::PlaceWindow . center')
         self.root.resizable(0, 0)
 

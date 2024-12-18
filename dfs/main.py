@@ -4,10 +4,10 @@ from dfs import DFS
 def main():
     # tuneables
     window_width = 800
-    window_height = 600
+    window_height = 800
     cell_size = 50
-    start_i = 0
-    start_j = 0
+    start_i = 7
+    start_j = 7
     sleep_time = 0.1
     seed = None
 

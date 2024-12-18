@@ -1,6 +1,5 @@
 from graphics import *
 from cell import *
-import random
 import time
 
 class BFS:
@@ -43,43 +42,24 @@ class BFS:
                 self.parent.redraw()
                 time.sleep(0.01)
 
-    def search(self, start_i: int, start_j: int, sleep_time: int, seed=None):
-        self.sleep_time = sleep_time
-        if seed is not None:
-            random.seed(seed)
-        self.search_r(start_i, start_j, [("start", self.cell_matrix[start_i][start_j])])
+    def search(self, start_i: int, start_j: int, sleep_time: int):
+        to_search = [self.cell_matrix[start_i][start_j]]
 
-    def search_r(self, i: int, j: int, to_search: list):
         while to_search:
-            direction, current_cell = to_search.pop(0)
-            i = current_cell.i
-            j = current_cell.j
+            current_cell = to_search.pop(0)
 
-            print(i, j, direction, current_cell)
             current_cell.searched = True
             current_cell.draw()
             self.parent.redraw()
-            time.sleep(self.sleep_time)
+            time.sleep(sleep_time)
 
-            neighbors = self.get_cell_neighbors(i, j)
-            valid_neighbors = {k: v for k, v in neighbors.items() if v and v.searched == False}
-            
-            for direction, neighbor in valid_neighbors.items():
-                if neighbor not in to_search:
-                    to_search.append((direction, neighbor))
-
-            print(to_search)
-            input("Press Enter to continue")
-    
-    def get_previous_cell(self, i: int, j: int, direction: str):
-        if direction == "top":
-            return self.cell_matrix[i + 1][j]
-        if direction == "right":
-            return self.cell_matrix[i][j - 1]
-        if direction == "bottom":
-            return self.cell_matrix[i - 1][j]
-        if direction == "left":
-            return self.cell_matrix[i][j + 1]
+            neighbors = self.get_cell_neighbors(current_cell.i, current_cell.j)
+            neighbors_to_search = [v for v in neighbors.values() if (
+                v 
+                and v.searched == False 
+                and v not in to_search
+            )]
+            to_search.extend(neighbors_to_search)
 
     def get_cell_neighbors(self, i: int, j: int):
         if i - 1 >= 0:
