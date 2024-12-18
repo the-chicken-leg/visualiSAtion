@@ -2,8 +2,6 @@
 
 The proper spelling is obviously visuali***Z***ation, but then I couldn't vizualize the (data) ***S***tructures and ***A***lgorithms... get it?
 
-# I likes to see things with my eyeballs
-
 ## DFS random
 
 ![dfs random gif](/media/dfs_random.gif)
