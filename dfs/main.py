@@ -1,5 +1,6 @@
 from graphics import Window
 from dfs import DFS
+import sys
 
 def main():
     # tuneables
@@ -13,6 +14,7 @@ def main():
     is_random = True
     seed = None
 
+    sys.setrecursionlimit(10000)
     window = Window(window_width, window_height)
     cell_matrix = DFS(window, cell_size, smooth_cell_creation)
     input("Press Enter to continue")
