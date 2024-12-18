@@ -42,54 +42,38 @@ class BFS:
                 time.sleep(0.01)
 
     def search(self, start_i: int, start_j: int, sleep_time: int, seed=None):
-        self.start_i = start_i
-        self.start_j = start_j
         self.sleep_time = sleep_time
         if seed is not None:
             random.seed(seed)
-        self.search_r(start_i, start_j)
+        self.search_r(start_i, start_j, [("start", self.cell_matrix[start_i][start_j])])
 
-    def search_r(self, i: int, j: int, direction: str = None):
-        first_pass = True
-        while True:
-            current_cell = self.cell_matrix[i][j]
+    def search_r(self, i: int, j: int, to_search: list):
+        while to_search:
+            direction, current_cell = to_search.pop(0)
+            if direction == "top":
+                i -= 1
+            if direction == "right":
+                j += 1
+            if direction == "bottom":
+                i += 1
+            if direction == "left":
+                j -= 1
+            print(i, j, direction, current_cell)
             current_cell.searched = True
             current_cell.draw()
-            if i == self.start_i and j == self.start_j:
-                start_end_point = Circle(self.parent, current_cell.center, 10)
-                start_end_point.draw("lime green")
-            if direction and first_pass:
-                previous_cell = self.get_previous_cell(i, j, direction)
-                track_up_stack = SolidLine(self.parent, current_cell.center, previous_cell.center)
-                track_up_stack.draw("black")
             self.parent.redraw()
             time.sleep(self.sleep_time)
 
             neighbors = self.get_cell_neighbors(i, j)
-            to_search = {k: v for k, v in neighbors.items() if v and v.searched == False}
-            if not to_search:
-                if first_pass:
-                    current_cell.draw()
-                    self.parent.redraw()
-                return
-            
-            if not first_pass:
-                breadth_marker = Circle(self.parent, current_cell.center, 10)
-                breadth_marker.draw("black")
-                self.parent.redraw()
+            valid_neighbors = {k: v for k, v in neighbors.items() if v and v.searched == False} 
+            for direction, neighbor in valid_neighbors.items():
+                if neighbor not in to_search:
+                    to_search.append((direction, neighbor))
 
-            direction = random.choice(list(to_search.keys()))
-            if direction == "top":
-                self.search_r(i - 1, j, direction)
-            if direction == "right":
-                self.search_r(i, j + 1, direction)
-            if direction == "bottom":
-                self.search_r(i + 1, j, direction)
-            if direction == "left":
-                self.search_r(i, j - 1, direction)
-                
-            first_pass = False
-
+            print(to_search)
+            input("Press Enter to continue")
+            self.search_r(i, j, to_search)
+    
     def get_previous_cell(self, i: int, j: int, direction: str):
         if direction == "top":
             return self.cell_matrix[i + 1][j]
