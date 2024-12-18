@@ -5,9 +5,9 @@ def main():
     # tuneables
     window_width = 800
     window_height = 800
-    cell_size = 100
-    start_i = 3
-    start_j = 4
+    cell_size = 50
+    start_i = 8
+    start_j = 8
     sleep_time = 0.1
 
     window = Window(window_width, window_height)
