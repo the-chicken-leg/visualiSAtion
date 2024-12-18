@@ -77,18 +77,18 @@ class DfsNonrandom:
                 breadth_marker = Circle(self.parent, current_cell.center, 10)
                 breadth_marker.draw("black")
                 self.parent.redraw()
-
-            # print(to_search)
-            # direction = random.choice(list(to_search.keys()))
-            for direction in to_search:
-                if direction == "top":
-                    self.search_r(i - 1, j, direction)
-                if direction == "right":
-                    self.search_r(i, j + 1, direction)
-                if direction == "bottom":
-                    self.search_r(i + 1, j, direction)
-                if direction == "left":
-                    self.search_r(i, j - 1, direction)
+            
+            if "top" in to_search:
+                self.search_r(i - 1, j, "top")
+                to_search = {k: v for k, v in neighbors.items() if v and v.searched == False}
+            if "right" in to_search:
+                self.search_r(i, j + 1, "right")
+                to_search = {k: v for k, v in neighbors.items() if v and v.searched == False}
+            if "bottom" in to_search:
+                self.search_r(i + 1, j, "bottom")
+                to_search = {k: v for k, v in neighbors.items() if v and v.searched == False}
+            if "left" in to_search:
+                self.search_r(i, j - 1, "left")
                 
             first_pass = False
 

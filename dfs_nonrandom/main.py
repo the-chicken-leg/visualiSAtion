@@ -5,9 +5,9 @@ def main():
     # tuneables
     window_width = 800
     window_height = 800
-    cell_size = 50
-    start_i = 7
-    start_j = 7
+    cell_size = 100
+    start_i = 3
+    start_j = 4
     sleep_time = 0.1
 
     window = Window(window_width, window_height)
@@ -16,8 +16,3 @@ def main():
     window.wait_for_close()
 
 main()
-
-
-
-# directions = ["top", "right", "bottom", "left"]
-# direction = directions.pop(0)
