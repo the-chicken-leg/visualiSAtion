@@ -4,9 +4,17 @@ The proper spelling is obviously visuali***Z***ation, but then I couldn't vizual
 
 # I likes to see things with my eyeballs
 
-## DFS
+## DFS random
 
-![dfs gif](/media/dfs.gif)
+![dfs random gif](/media/dfs_random.gif)
+
+## DFS non-random
+
+![dfs non-random gif](/media/dfs_nonrandom.gif)
+
+## BFS
+
+![bfs](/media/bfs.gif)
 
 # How to visualize
 
