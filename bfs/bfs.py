@@ -28,6 +28,8 @@ class BFS:
                         self.parent,
                         Point(center_x, center_y),
                         self.cell_size,
+                        i,
+                        j,
                     )
                 )
             self.cell_matrix.append(row)
@@ -50,14 +52,9 @@ class BFS:
     def search_r(self, i: int, j: int, to_search: list):
         while to_search:
             direction, current_cell = to_search.pop(0)
-            if direction == "top":
-                i -= 1
-            if direction == "right":
-                j += 1
-            if direction == "bottom":
-                i += 1
-            if direction == "left":
-                j -= 1
+            i = current_cell.i
+            j = current_cell.j
+
             print(i, j, direction, current_cell)
             current_cell.searched = True
             current_cell.draw()
@@ -65,14 +62,14 @@ class BFS:
             time.sleep(self.sleep_time)
 
             neighbors = self.get_cell_neighbors(i, j)
-            valid_neighbors = {k: v for k, v in neighbors.items() if v and v.searched == False} 
+            valid_neighbors = {k: v for k, v in neighbors.items() if v and v.searched == False}
+            
             for direction, neighbor in valid_neighbors.items():
                 if neighbor not in to_search:
                     to_search.append((direction, neighbor))
 
             print(to_search)
             input("Press Enter to continue")
-            self.search_r(i, j, to_search)
     
     def get_previous_cell(self, i: int, j: int, direction: str):
         if direction == "top":
