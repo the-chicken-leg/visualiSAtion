@@ -9,11 +9,15 @@ def main():
     start_i = 7
     start_j = 7
     sleep_time = 0.1
-    seed = None
 
     window = Window(window_width, window_height)
     cell_matrix = DfsNonrandom(window, cell_size)
-    cell_matrix.search(start_i, start_j, sleep_time, seed)
+    cell_matrix.search(start_i, start_j, sleep_time)
     window.wait_for_close()
 
 main()
+
+
+
+# directions = ["top", "right", "bottom", "left"]
+# direction = directions.pop(0)
