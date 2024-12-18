@@ -130,3 +130,27 @@ class Triangle:
             self.bottom_left.y,
             fill=fill_color,
         )
+
+class Text:
+    def __init__(self, parent: Window, center: Point, text: str):
+        self.parent = parent
+        self.center = center
+        self.text = text
+
+    def draw(self, fill_color: str, font_size: int):
+        self.parent.canvas.create_text(
+            self.center.x,
+            self.center.y,
+            font=("Tahoma", font_size),
+            fill=fill_color,
+            justify="center",
+            text=self.text,
+        )
+
+if __name__ == "__main__":
+    window = Window(800, 800)
+
+    text = Text(window, Point(400, 400), "1")
+    text.draw("black", 20)
+
+    window.wait_for_close()
