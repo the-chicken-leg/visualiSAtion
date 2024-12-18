@@ -1,5 +1,5 @@
 from graphics import Window
-from random_dfs import RandomDFS
+from dfs_random import DfsRandom
 
 def main():
     # tuneables
@@ -12,7 +12,7 @@ def main():
     seed = None
 
     window = Window(window_width, window_height)
-    cell_matrix = RandomDFS(window, cell_size)
+    cell_matrix = DfsRandom(window, cell_size)
     cell_matrix.search(start_i, start_j, sleep_time, seed)
     window.wait_for_close()
 
