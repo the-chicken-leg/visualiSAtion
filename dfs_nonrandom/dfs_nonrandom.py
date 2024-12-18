@@ -66,30 +66,41 @@ class DfsNonrandom:
             time.sleep(self.sleep_time)
 
             neighbors = self.get_cell_neighbors(i, j)
-            to_search = {k: v for k, v in neighbors.items() if v and v.searched == False}
+            to_search = self.get_to_search(neighbors)
+
             if not to_search:
                 if first_pass:
                     current_cell.draw()
                     self.parent.redraw()
                 return
-            
-            if not first_pass:
-                breadth_marker = Circle(self.parent, current_cell.center, 10)
-                breadth_marker.draw("black")
-                self.parent.redraw()
-            
+
+            def draw_breadth_marker(to_search: dict, first_pass: bool, current_cell: Cell):
+                if to_search and first_pass:
+                    current_cell.draw()
+                    breadth_marker = Circle(self.parent, current_cell.center, 10)
+                    breadth_marker.draw("black")
+                    self.parent.redraw() 
+
             if "top" in to_search:
                 self.search_r(i - 1, j, "top")
-                to_search = {k: v for k, v in neighbors.items() if v and v.searched == False}
+                to_search = self.get_to_search(neighbors)
+                draw_breadth_marker(to_search, first_pass, current_cell)
+
             if "right" in to_search:
                 self.search_r(i, j + 1, "right")
-                to_search = {k: v for k, v in neighbors.items() if v and v.searched == False}
+                to_search = self.get_to_search(neighbors)
+                draw_breadth_marker(to_search, first_pass, current_cell)
+
             if "bottom" in to_search:
                 self.search_r(i + 1, j, "bottom")
-                to_search = {k: v for k, v in neighbors.items() if v and v.searched == False}
+                to_search = self.get_to_search(neighbors)
+                draw_breadth_marker(to_search, first_pass, current_cell)
+
             if "left" in to_search:
                 self.search_r(i, j - 1, "left")
-                
+                to_search = self.get_to_search(neighbors)
+                draw_breadth_marker(to_search, first_pass, current_cell)
+            
             first_pass = False
 
     def get_previous_cell(self, i: int, j: int, direction: str):
@@ -129,3 +140,6 @@ class DfsNonrandom:
             "bottom": neighbor_bottom,
             "left": neighbor_left,
         }
+    
+    def get_to_search(self, neighbors: dict):
+        return {k: v for k, v in neighbors.items() if v and v.searched == False}
