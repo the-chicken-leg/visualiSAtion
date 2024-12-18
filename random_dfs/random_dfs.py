@@ -3,7 +3,7 @@ from cell import *
 import random
 import time
 
-class DFS:
+class RandomDFS:
     def __init__(self, parent: Window, cell_size: int):
         self.parent = parent
         self.cell_size = cell_size

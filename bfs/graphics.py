@@ -146,11 +146,3 @@ class Text:
             justify="center",
             text=self.text,
         )
-
-if __name__ == "__main__":
-    window = Window(800, 800)
-
-    text = Text(window, Point(400, 400), "1")
-    text.draw("black", 20)
-
-    window.wait_for_close()

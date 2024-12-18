@@ -42,8 +42,9 @@ class BFS:
                 self.parent.redraw()
                 time.sleep(0.01)
 
-    def search(self, start_i: int, start_j: int, sleep_time: int):
+    def search(self, start_i: int, start_j: int, sleep_time: int, show_numbers: bool):
         to_search = [self.cell_matrix[start_i][start_j]]
+        search_num = 1
 
         while to_search:
             current_cell = to_search.pop(0)
@@ -59,6 +60,15 @@ class BFS:
                 and v.searched == False 
                 and v not in to_search
             )]
+            
+            if show_numbers:
+                for neighbor in neighbors_to_search:
+                    neighbor.search_num_text = Text(self.parent, neighbor.center, str(search_num))
+                    neighbor.search_num_text.draw("black", 16)
+                    self.parent.redraw()
+                    time.sleep(sleep_time)
+                    search_num += 1
+
             to_search.extend(neighbors_to_search)
 
     def get_cell_neighbors(self, i: int, j: int):

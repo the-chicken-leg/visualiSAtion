@@ -8,11 +8,12 @@ def main():
     cell_size = 50
     start_i = 7
     start_j = 7
-    sleep_time = 0.1
+    sleep_time = 0.3
+    show_numbers = True
 
     window = Window(window_width, window_height)
     cell_matrix = BFS(window, cell_size)
-    cell_matrix.search(start_i, start_j, sleep_time)
+    cell_matrix.search(start_i, start_j, sleep_time, show_numbers)
     window.wait_for_close()
 
 main()
