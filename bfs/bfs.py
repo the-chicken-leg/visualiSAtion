@@ -3,9 +3,10 @@ from cell import *
 import time
 
 class BFS:
-    def __init__(self, parent: Window, cell_size: int):
+    def __init__(self, parent: Window, cell_size: int, smooth_cell_creation: bool):
         self.parent = parent
         self.cell_size = cell_size
+        self.smooth_cell_creation = smooth_cell_creation
 
         self.num_columns = (parent.width - 50) // self.cell_size
         self.x_border = (parent.width - (self.cell_size * self.num_columns)) // 2
@@ -40,7 +41,8 @@ class BFS:
             for cell in cell_row:
                 cell.draw()
                 self.parent.redraw()
-                time.sleep(0.01)
+                if self.smooth_cell_creation:
+                    time.sleep(0.01)
 
     def search(self, start_i: int, start_j: int, sleep_time: int, show_numbers: bool):
         to_search = [self.cell_matrix[start_i][start_j]]
