@@ -1,3 +1,6 @@
+import os, sys
+sys.path.insert(0, os.path.join(os.getcwd()))
+
 from graphics import *
 from cell import *
 import random
