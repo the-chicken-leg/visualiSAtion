@@ -75,7 +75,7 @@ class BFS:
 
             to_search.extend(neighbors_to_search)
 
-    def get_cell_neighbors(self, i: int, j: int):
+    def get_cell_neighbors(self, i: int, j: int) -> dict:
         if i - 1 >= 0:
             neighbor_top = self.cell_matrix[i - 1][j]
         else:

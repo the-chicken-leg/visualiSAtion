@@ -55,25 +55,26 @@ class DFS:
         self.is_random = is_random
         if seed is not None:
             random.seed(seed)
-        self.search_r(start_i, start_j)
 
-    def search_r(self, i: int, j: int, direction: str = None):
+        self.starting_cell = self.cell_matrix[start_i][start_j]
+        self.search_r(self.starting_cell)
+
+    def search_r(self, current_cell: Cell, direction: str = None):
         first_pass = True
         while True:
-            current_cell = self.cell_matrix[i][j]
             current_cell.searched = True
             current_cell.draw()
-            if i == self.start_i and j == self.start_j:
+            if current_cell.i == self.start_i and current_cell.j == self.start_j:
                 start_end_point = Circle(self.parent, current_cell.center, 10)
                 start_end_point.draw("lime green")
             if direction and first_pass:
-                previous_cell = self.get_previous_cell(i, j, direction)
+                previous_cell = self.get_previous_cell(current_cell.i, current_cell.j, direction)
                 track_up_stack = SolidLine(self.parent, current_cell.center, previous_cell.center)
                 track_up_stack.draw("black")
             self.parent.redraw()
             time.sleep(self.sleep_time)
 
-            neighbors = self.get_cell_neighbors(i, j)
+            neighbors = self.get_cell_neighbors(current_cell.i, current_cell.j)
             to_search = [k for k, v in neighbors.items() if v and v.searched == False]
             if not to_search:
                 if first_pass:
@@ -92,17 +93,17 @@ class DFS:
                 direction = to_search[0]
 
             if direction == "top":
-                self.search_r(i - 1, j, direction)
+                self.search_r(self.cell_matrix[current_cell.i - 1][current_cell.j], direction)
             if direction == "right":
-                self.search_r(i, j + 1, direction)
+                self.search_r(self.cell_matrix[current_cell.i][current_cell.j + 1], direction)
             if direction == "bottom":
-                self.search_r(i + 1, j, direction)
+                self.search_r(self.cell_matrix[current_cell.i + 1][current_cell.j], direction)
             if direction == "left":
-                self.search_r(i, j - 1, direction)
+                self.search_r(self.cell_matrix[current_cell.i][current_cell.j - 1], direction)
                 
             first_pass = False
 
-    def get_previous_cell(self, i: int, j: int, direction: str):
+    def get_previous_cell(self, i: int, j: int, direction: str) -> Cell:
         if direction == "top":
             return self.cell_matrix[i + 1][j]
         if direction == "right":
@@ -112,7 +113,7 @@ class DFS:
         if direction == "left":
             return self.cell_matrix[i][j + 1]
 
-    def get_cell_neighbors(self, i: int, j: int):
+    def get_cell_neighbors(self, i: int, j: int) -> dict:
         if i - 1 >= 0:
             neighbor_top = self.cell_matrix[i - 1][j]
         else:
