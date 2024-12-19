@@ -50,7 +50,6 @@ class BFS:
 
         while to_search:
             current_cell = to_search.pop(0)
-
             current_cell.searched = True
             current_cell.draw()
             self.parent.redraw()
