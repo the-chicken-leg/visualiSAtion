@@ -68,6 +68,24 @@ class DashedLine:
             dash=10
         )
 
+class Rectangle:
+    def __init__(self, parent: Window, center: Point, x_length: int, y_length):
+        self.parent = parent
+        self.center = center
+        self.x_length = x_length
+        self.y_length = y_length
+        self.top_left = Point(center.x - (x_length / 2), center.y - (y_length / 2))
+        self.bottom_right = Point(center.x + (x_length / 2), center.y + (y_length / 2))
+
+    def draw(self, fill_color: str = "black"):
+        self.parent.canvas.create_rectangle(
+            self.top_left.x,
+            self.top_left.y,
+            self.bottom_right.x,
+            self.bottom_right.y,
+            fill=fill_color,
+        )
+
 class Square:
     def __init__(self, parent: Window, center: Point, side_length: int):
         self.parent = parent
