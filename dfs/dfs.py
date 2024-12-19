@@ -32,6 +32,8 @@ class DFS:
                         self.parent,
                         Point(center_x, center_y),
                         self.cell_size,
+                        i,
+                        j,
                     )
                 )
             self.cell_matrix.append(row)
