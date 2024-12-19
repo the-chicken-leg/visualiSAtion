@@ -1,7 +1,7 @@
 import os, sys
 sys.path.insert(0, os.path.join(os.getcwd()))
 
-from graphics import Window
+from graphics import *
 from bfs import BFS
 
 def main():
@@ -16,9 +16,8 @@ def main():
     show_numbers = True
 
     window = Window(window_width, window_height)
-    cell_matrix = BFS(window, cell_size, smooth_cell_creation)
-    input("Press Enter to continue")
-    cell_matrix.search(start_i, start_j, sleep_time, show_numbers)
+    bfs_matrix = BFS(window, cell_size, smooth_cell_creation)
+    bfs_matrix.search(start_i, start_j, sleep_time, show_numbers)
     window.wait_for_close()
 
 main()
