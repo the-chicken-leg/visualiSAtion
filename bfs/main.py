@@ -2,7 +2,7 @@ import os, sys
 sys.path.insert(0, os.path.join(os.getcwd()))
 
 from graphics import Window
-from bfs import BFS
+from bfs_matrix import BFSMatrix
 
 def main():
     # tuneables
@@ -16,7 +16,7 @@ def main():
     show_numbers = True
 
     window = Window(window_width, window_height)
-    bfs_matrix = BFS(window, cell_size, smooth_cell_creation)
+    bfs_matrix = BFSMatrix(window, cell_size, smooth_cell_creation)
     bfs_matrix.search(start_i, start_j, sleep_time, show_numbers)
     window.wait_for_close()
 

@@ -2,7 +2,7 @@ import os, sys
 sys.path.insert(0, os.path.join(os.getcwd()))
 
 from graphics import Window
-from dfs import DFS
+from dfs_matrix import DFSMatrix
 
 def main():
     # tuneables
@@ -18,7 +18,7 @@ def main():
 
     sys.setrecursionlimit(10000)
     window = Window(window_width, window_height)
-    dfs_matrix = DFS(window, cell_size, smooth_cell_creation)
+    dfs_matrix = DFSMatrix(window, cell_size, smooth_cell_creation)
     dfs_matrix.search(start_i, start_j, sleep_time, is_random, seed)
     window.wait_for_close()
 
