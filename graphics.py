@@ -69,7 +69,7 @@ class DashedLine:
         )
 
 class Rectangle:
-    def __init__(self, parent: Window, center: Point, x_length: int, y_length):
+    def __init__(self, parent: Window, center: Point, x_length: int, y_length: int):
         self.parent = parent
         self.center = center
         self.x_length = x_length

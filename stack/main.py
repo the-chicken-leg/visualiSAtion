@@ -8,13 +8,14 @@ def main():
     # tuneables
     window_width = 800
     window_height = 800
+    single_dish_height = 25
     smooth_dishes = True
     push_pop_ratio = 1
     sleep_time = 0.1
 
     window = Window(window_width, window_height)
-    dirty_dishes = DirtyDishes(window, smooth_dishes)
-    dirty_dishes.simulate(push_pop_ratio, sleep_time)
+    dirty_dishes = DirtyDishes(window, single_dish_height, smooth_dishes)
+    # dirty_dishes.simulate(push_pop_ratio, sleep_time)
     window.wait_for_close()
 
 main()
