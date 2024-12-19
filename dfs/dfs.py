@@ -69,7 +69,7 @@ class DFS:
             time.sleep(self.sleep_time)
 
             neighbors = self.get_cell_neighbors(i, j)
-            to_search = {k: v for k, v in neighbors.items() if v and v.searched == False}
+            to_search = [k for k, v in neighbors.items() if v and v.searched == False]
             if not to_search:
                 if first_pass:
                     current_cell.draw()
@@ -82,9 +82,9 @@ class DFS:
                 self.parent.redraw()
 
             if self.is_random:
-                direction = random.choice(list(to_search.keys()))
+                direction = random.choice(to_search)
             else:
-                direction = list(to_search.keys())[0]
+                direction = to_search[0]
 
             if direction == "top":
                 self.search_r(i - 1, j, direction)
