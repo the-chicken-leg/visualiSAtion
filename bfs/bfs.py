@@ -2,7 +2,7 @@ import os, sys
 sys.path.insert(0, os.path.join(os.getcwd()))
 
 from graphics import *
-from cell_matrix import CellMatrix
+from cell_matrix import *
 import time
 
 class BFS(CellMatrix):

@@ -1,4 +1,3 @@
-from graphics import *
 from cell import *
 import time
 
