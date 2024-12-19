@@ -18,8 +18,8 @@ def main():
 
     sys.setrecursionlimit(10000)
     window = Window(window_width, window_height)
-    bfs_matrix = DFS(window, cell_size, smooth_cell_creation)
-    bfs_matrix.search(start_i, start_j, sleep_time, is_random, seed)
+    dfs_matrix = DFS(window, cell_size, smooth_cell_creation)
+    dfs_matrix.search(start_i, start_j, sleep_time, is_random, seed)
     window.wait_for_close()
 
 main()
