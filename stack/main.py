@@ -6,7 +6,7 @@ from dirty_dishes import DirtyDishes
 
 def main():
     # tuneables
-    window_width = 800
+    window_width = 400
     window_height = 800
     single_dish_height = 25
     smooth_dishes = True
