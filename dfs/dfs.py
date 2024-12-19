@@ -70,7 +70,7 @@ class DFS:
             if direction and first_pass:
                 previous_cell = self.get_previous_cell(current_cell.i, current_cell.j, direction)
                 track_up_stack = SolidLine(self.parent, current_cell.center, previous_cell.center)
-                track_up_stack.draw("black")
+                track_up_stack.draw()
             self.parent.redraw()
             time.sleep(self.sleep_time)
 
@@ -84,7 +84,7 @@ class DFS:
             
             if not first_pass:
                 breadth_marker = Circle(self.parent, current_cell.center, 10)
-                breadth_marker.draw("black")
+                breadth_marker.draw()
                 self.parent.redraw()
 
             if self.is_random:

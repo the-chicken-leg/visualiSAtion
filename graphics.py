@@ -7,7 +7,7 @@ class Window:
         self.height = height
 
         self.root = Tk()
-        self.root.title("Super duper BFS!")
+        self.root.title("visualiSAtion!")
         # self.root.eval('tk::PlaceWindow . center')
         self.root.resizable(0, 0)
 
@@ -41,7 +41,7 @@ class SolidLine:
         self.point1 = point1
         self.point2 = point2
 
-    def draw(self, fill_color: str, width=2):
+    def draw(self, fill_color: str = "black", width : int = 2):
         self.parent.canvas.create_line(
             self.point1.x,
             self.point1.y,
@@ -57,14 +57,14 @@ class DashedLine:
         self.point1 = point1
         self.point2 = point2
 
-    def draw(self, fill_color: str):
+    def draw(self, fill_color: str = "black", width : int = 2):
         self.parent.canvas.create_line(
             self.point1.x,
             self.point1.y,
             self.point2.x,
             self.point2.y,
             fill=fill_color,
-            width=2,
+            width=width,
             dash=10
         )
 
@@ -75,7 +75,7 @@ class Square:
         self.top_left = Point(center.x - (side_length / 2), center.y - (side_length / 2))
         self.bottom_right = Point(center.x + (side_length / 2), center.y + (side_length / 2))
 
-    def draw(self, fill_color: str):
+    def draw(self, fill_color: str = "black"):
         self.parent.canvas.create_rectangle(
             self.top_left.x,
             self.top_left.y,
@@ -90,7 +90,7 @@ class Circle:
         self.top_left = Point(center.x - radius, center.y - radius)
         self.bottom_right = Point(center.x + radius, center.y + radius)
 
-    def draw(self, fill_color: str):
+    def draw(self, fill_color: str = "black"):
         self.parent.canvas.create_oval(
             self.top_left.x,
             self.top_left.y,
@@ -107,11 +107,11 @@ class BigX:
         self.bottom_right = Point(center.x + radius, center.y + radius)
         self.bottom_left = Point(center.x - radius, center.y + radius)
 
-    def draw(self, fill_color: str):
+    def draw(self, fill_color: str = "black", width: int = 7):
         forward_slash = SolidLine(self.parent, self.bottom_left, self.top_right)
         back_slash = SolidLine(self.parent, self.bottom_right, self.top_left)
-        forward_slash.draw(fill_color, width=7)
-        back_slash.draw(fill_color, width=7)
+        forward_slash.draw(fill_color, width)
+        back_slash.draw(fill_color, width)
 
 class Triangle:
     def __init__(self, parent: Window, center: Point, radius: int):
@@ -120,7 +120,7 @@ class Triangle:
         self.bottom_right = Point(center.x + radius, center.y + radius)
         self.bottom_left = Point(center.x - radius, center.y + radius)
 
-    def draw(self, fill_color: str):
+    def draw(self, fill_color: str = "black"):
         self.parent.canvas.create_polygon(
             self.top.x,
             self.top.y,
@@ -137,7 +137,7 @@ class Text:
         self.center = center
         self.text = text
 
-    def draw(self, fill_color: str, font_size: int):
+    def draw(self, fill_color: str = "black", font_size: int = 16):
         self.parent.canvas.create_text(
             self.center.x,
             self.center.y,

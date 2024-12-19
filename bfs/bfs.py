@@ -68,7 +68,7 @@ class BFS:
             if show_numbers:
                 for neighbor in neighbors_to_search:
                     neighbor.search_num_text = Text(self.parent, neighbor.center, str(search_num))
-                    neighbor.search_num_text.draw("black", 16)
+                    neighbor.search_num_text.draw()
                     self.parent.redraw()
                     time.sleep(sleep_time)
                     search_num += 1
