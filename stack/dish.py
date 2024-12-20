@@ -5,10 +5,9 @@ from graphics import *
 import random
 
 class Dish(Rectangle):
-    def __init__(self, parent: Window, center: Point, y_length: int, i: int):
+    def __init__(self, parent: Window, center: Point, single_dish_height: int):
         x_length = parent.width - (parent.width * 0.5)
-        super().__init__(parent, center, x_length, y_length)
-        self.i = i
+        super().__init__(parent, center, x_length, single_dish_height)
 
     def draw(self):
         red = "%02x" % random.randint(0, 255)

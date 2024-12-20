@@ -6,7 +6,7 @@ from cell_matrix import *
 import time
 
 class BFSMatrix(CellMatrix):
-    def search(self, start_i: int, start_j: int, sleep_time: int, show_numbers: bool):
+    def search(self, start_i: int, start_j: int, sleep_time: float, show_numbers: bool):
         to_search = [self.cell_matrix[start_i][start_j]]
         search_num = 1
 

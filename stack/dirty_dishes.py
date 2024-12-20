@@ -2,7 +2,7 @@ import os, sys
 sys.path.insert(0, os.path.join(os.getcwd()))
 
 from graphics import *
-from dish import Dish
+from dish import *
 import random
 
 class DirtyDishes:
@@ -23,7 +23,6 @@ class DirtyDishes:
                     self.parent,
                     Point(self.center_x, center_y),
                     self.single_dish_height,
-                    i,
                 )
             )
 
@@ -34,7 +33,7 @@ class DirtyDishes:
             dirty_dish.draw()
             self.parent.redraw()
 
-    def simulate(self, push_pop_ratio, sleep_time):
+    def simulate(self, push_pop_ratio: float, sleep_time: float):
         while True:
             push_or_pop = self.get_push_or_pop(push_pop_ratio)
             if push_or_pop == "push":
@@ -43,7 +42,7 @@ class DirtyDishes:
                 self.pop()
             time.sleep(sleep_time)
 
-    def get_push_or_pop(self, push_pop_ratio):
+    def get_push_or_pop(self, push_pop_ratio: float):
         prob_push = push_pop_ratio / (push_pop_ratio + 1)
         rando = random.random()
         if rando <= prob_push:
@@ -51,13 +50,12 @@ class DirtyDishes:
         return "pop"
         
     def push(self):
-        i = len(self.dirty_dishes)
-        center_y = self.parent.height - 25 - (0.5 * self.single_dish_height) - (i * self.single_dish_height)
+        num_dishes = len(self.dirty_dishes)
+        center_y = self.parent.height - 25 - (0.5 * self.single_dish_height) - (num_dishes * self.single_dish_height)
         new_dish = Dish(
             self.parent,
             Point(self.center_x, center_y),
             self.single_dish_height,
-            i,
         )
         self.dirty_dishes.append(new_dish)
         new_dish.draw()

@@ -7,7 +7,7 @@ import random
 import time
 
 class DFSMatrix(CellMatrix):
-    def search(self, start_i: int, start_j: int, sleep_time: int, is_random: bool, seed):
+    def search(self, start_i: int, start_j: int, sleep_time: float, is_random: bool, seed):
         self.start_i = start_i
         self.start_j = start_j
         self.sleep_time = sleep_time
