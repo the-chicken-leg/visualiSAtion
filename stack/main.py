@@ -12,7 +12,7 @@ def main():
     single_dish_height = 25
     push_pop_ratio = 0.75
     sleep_time = 0.2
-    stop_when_empty = False
+    stop_when_empty = True
 
     window = Window(window_width, window_height)
     dirty_dishes = DirtyDishes(window, starting_num_dishes, single_dish_height)
