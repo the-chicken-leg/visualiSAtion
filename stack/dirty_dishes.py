@@ -42,7 +42,7 @@ class DirtyDishes:
                 self.pop()
             time.sleep(sleep_time)
 
-    def get_push_or_pop(self, push_pop_ratio: float):
+    def get_push_or_pop(self, push_pop_ratio: float) -> str:
         prob_push = push_pop_ratio / (push_pop_ratio + 1)
         rando = random.random()
         if rando <= prob_push:
