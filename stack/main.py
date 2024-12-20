@@ -10,7 +10,7 @@ def main():
     window_height = 800
     starting_num_dishes = 15
     single_dish_height = 25
-    push_pop_ratio = 1.0
+    push_pop_ratio = 0.75
     sleep_time = 0.1
 
     window = Window(window_width, window_height)
