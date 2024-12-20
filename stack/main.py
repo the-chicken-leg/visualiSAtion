@@ -12,10 +12,11 @@ def main():
     single_dish_height = 25
     push_pop_ratio = 0.75
     sleep_time = 0.2
+    stop_when_empty = False
 
     window = Window(window_width, window_height)
     dirty_dishes = DirtyDishes(window, starting_num_dishes, single_dish_height)
-    dirty_dishes.simulate(push_pop_ratio, sleep_time)
+    dirty_dishes.simulate(push_pop_ratio, sleep_time, stop_when_empty)
     window.wait_for_close()
 
 main()

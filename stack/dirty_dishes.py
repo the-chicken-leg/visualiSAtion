@@ -33,13 +33,15 @@ class DirtyDishes:
             dirty_dish.draw()
             self.parent.redraw()
 
-    def simulate(self, push_pop_ratio: float, sleep_time: float):
+    def simulate(self, push_pop_ratio: float, sleep_time: float, stop_when_empty: bool):
         while True:
             push_or_pop = self.get_push_or_pop(push_pop_ratio)
             if push_or_pop == "push":
                 self.push()
             elif push_or_pop == "pop":
                 self.pop()
+            if stop_when_empty and not self.dirty_dishes:
+                break
             time.sleep(sleep_time)
 
     def get_push_or_pop(self, push_pop_ratio: float) -> str:
