@@ -12,7 +12,11 @@ The proper spelling is obviously visuali***Z***ation, but then I couldn't vizual
 
 ## BFS
 
-![bfs](/media/bfs.gif)
+![bfs gif](/media/bfs.gif)
+
+## Stack
+
+![stack gif](/media/stack.gif)
 
 # How to visualize
 
