@@ -64,6 +64,6 @@ class DirtyDishes:
     def pop(self):
         if not self.dirty_dishes:
             return
-        dish_to_clean = self.dirty_dishes.pop()
-        self.parent.canvas.delete(dish_to_clean.id)
+        clean_this_dish = self.dirty_dishes.pop()
+        self.parent.canvas.delete(clean_this_dish.id)
         self.parent.redraw()
