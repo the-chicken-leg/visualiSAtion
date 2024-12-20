@@ -11,7 +11,7 @@ def main():
     starting_num_dishes = 15
     single_dish_height = 25
     push_pop_ratio = 0.75
-    sleep_time = 0.1
+    sleep_time = 0.2
 
     window = Window(window_width, window_height)
     dirty_dishes = DirtyDishes(window, starting_num_dishes, single_dish_height)
