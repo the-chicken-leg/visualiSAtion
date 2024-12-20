@@ -14,5 +14,5 @@ class Dish(Rectangle):
         red = "%02x" % random.randint(0, 255)
         green = "%02x" % random.randint(0, 255)
         blue = "%02x" % random.randint(0, 255)
-        color = "#" + red + green + blue
-        super().draw(color)
+        fill_color = "#" + red + green + blue
+        super().draw(fill_color)

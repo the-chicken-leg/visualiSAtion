@@ -42,7 +42,7 @@ class SolidLine:
         self.point2 = point2
 
     def draw(self, fill_color: str = "black", width : int = 2):
-        self.parent.canvas.create_line(
+        self.id = self.parent.canvas.create_line(
             self.point1.x,
             self.point1.y,
             self.point2.x,
@@ -58,7 +58,7 @@ class DashedLine:
         self.point2 = point2
 
     def draw(self, fill_color: str = "black", width : int = 2):
-        self.parent.canvas.create_line(
+        self.id = self.parent.canvas.create_line(
             self.point1.x,
             self.point1.y,
             self.point2.x,
@@ -78,7 +78,7 @@ class Rectangle:
         self.bottom_right = Point(center.x + (x_length / 2), center.y + (y_length / 2))
 
     def draw(self, fill_color: str = "black"):
-        self.parent.canvas.create_rectangle(
+        self.id = self.parent.canvas.create_rectangle(
             self.top_left.x,
             self.top_left.y,
             self.bottom_right.x,
@@ -94,7 +94,7 @@ class Square:
         self.bottom_right = Point(center.x + (side_length / 2), center.y + (side_length / 2))
 
     def draw(self, fill_color: str = "black"):
-        self.parent.canvas.create_rectangle(
+        self.id = self.parent.canvas.create_rectangle(
             self.top_left.x,
             self.top_left.y,
             self.bottom_right.x,
@@ -109,7 +109,7 @@ class Circle:
         self.bottom_right = Point(center.x + radius, center.y + radius)
 
     def draw(self, fill_color: str = "black"):
-        self.parent.canvas.create_oval(
+        self.id = self.parent.canvas.create_oval(
             self.top_left.x,
             self.top_left.y,
             self.bottom_right.x,
@@ -139,7 +139,7 @@ class Triangle:
         self.bottom_left = Point(center.x - radius, center.y + radius)
 
     def draw(self, fill_color: str = "black"):
-        self.parent.canvas.create_polygon(
+        self.id = self.parent.canvas.create_polygon(
             self.top.x,
             self.top.y,
             self.bottom_right.x,
@@ -156,7 +156,7 @@ class Text:
         self.text = text
 
     def draw(self, fill_color: str = "black", font_size: int = 16):
-        self.parent.canvas.create_text(
+        self.id = self.parent.canvas.create_text(
             self.center.x,
             self.center.y,
             font=("Tahoma", font_size),
