@@ -21,6 +21,7 @@ def main():
     dirty_dishes.push()
     dirty_dishes.push()
     time.sleep(1)
+    dirty_dishes.pop()
 
     # dirty_dishes.simulate(push_pop_ratio, sleep_time)
     window.wait_for_close()

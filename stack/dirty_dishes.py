@@ -55,9 +55,11 @@ class DirtyDishes:
         if not self.dirty_dishes:
             return
         dish_to_clean = self.dirty_dishes.pop()
-        self.parent.canvas.delete(dish_to_clean)
-        # delete from canvas
-        # redraw canvas
+        self.parent.canvas.delete(dish_to_clean.id)
+        self.parent.redraw()
+        if self.smooth_dishes:
+            time.sleep(0.1)
+
 
 
 

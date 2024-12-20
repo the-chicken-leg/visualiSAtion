@@ -128,8 +128,8 @@ class BigX:
     def draw(self, fill_color: str = "black", width: int = 7):
         forward_slash = SolidLine(self.parent, self.bottom_left, self.top_right)
         back_slash = SolidLine(self.parent, self.bottom_right, self.top_left)
-        forward_slash.draw(fill_color, width)
-        back_slash.draw(fill_color, width)
+        self.id1 = forward_slash.draw(fill_color, width)
+        self.id2 = back_slash.draw(fill_color, width)
 
 class Triangle:
     def __init__(self, parent: Window, center: Point, radius: int):
