@@ -18,6 +18,10 @@ The proper spelling is obviously visuali***Z***ation, but then I couldn't vizual
 
 ![stack gif](/media/stack.gif)
 
+## Queue
+
+![queue gif](/media/queue.gif)
+
 # How to visualize
 
 Each subfolder is the name of a data structure or algorithm and contains a main.py file which you can run to watch the magic - run the main.py file from the project root folder so that the PYTHONPATH is correct.
