@@ -11,7 +11,7 @@ def main():
     starting_num_patrons = 15
     patron_fatbody_index = 25
     push_pop_ratio = 0.75
-    sleep_time = 0.2
+    sleep_time = 0.3
     stop_when_empty = True
 
     window = Window(window_width, window_height)

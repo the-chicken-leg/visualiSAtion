@@ -14,11 +14,11 @@ class SnackshackQueue:
         self.snackshack_queue = []
         self.center_y = self.parent.height / 2
         for i in range(self.starting_num_patrons):
-            self.center_x = self.parent.width - 25 - (0.5 * self.patron_fatbody_index) - (i * self.patron_fatbody_index)
+            center_x = self.parent.width - 25 - (0.5 * self.patron_fatbody_index) - (i * self.patron_fatbody_index)
             self.snackshack_queue.append(
                 HungryPatron(
                     self.parent,
-                    Point(self.center_x, self.center_y),
+                    Point(center_x, self.center_y),
                     self.patron_fatbody_index,
                 )
             )
@@ -31,6 +31,7 @@ class SnackshackQueue:
             self.parent.redraw()
 
     def simulate(self, push_pop_ratio: float, sleep_time: float, stop_when_empty: bool):
+        self.sleep_time = sleep_time
         while True:
             push_or_pop = self.get_push_or_pop(push_pop_ratio)
             if push_or_pop == "push":
@@ -50,10 +51,10 @@ class SnackshackQueue:
     
     def push(self):
         num_patrons = len(self.snackshack_queue)
-        self.center_x = self.parent.width - 25 - (0.5 * self.patron_fatbody_index) - (num_patrons * self.patron_fatbody_index)
+        center_x = self.parent.width - 25 - (0.5 * self.patron_fatbody_index) - (num_patrons * self.patron_fatbody_index)
         new_patron = HungryPatron(
             self.parent,
-            Point(self.center_x, self.center_y),
+            Point(center_x, self.center_y),
             self.patron_fatbody_index,
         )
         self.snackshack_queue.append(new_patron)
@@ -61,17 +62,14 @@ class SnackshackQueue:
         self.parent.redraw()
 
     def pop(self):
-        
         if not self.snackshack_queue:
             return
         feed_this_patron = self.snackshack_queue.pop(0)
         self.parent.canvas.delete(feed_this_patron.id)
         self.parent.redraw()
+        time.sleep(self.sleep_time)
 
-        last_patron = self.snackshack_queue.pop()
-        for patron in self.snackshack_queue:
-            patron.move_up_in_line(Point(patron.center.x + self.patron_fatbody_index, patron.center.y))
-            self.parent.redraw()
-        
-        self.parent.canvas.delete(last_patron.id)
+        for hungry_patron in self.snackshack_queue:
+            self.parent.canvas.delete(hungry_patron.id)
+            hungry_patron.move_up_in_line()
         self.parent.redraw()
