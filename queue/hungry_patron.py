@@ -10,5 +10,11 @@ class HungryPatron(Rectangle):
         red = "%02x" % random.randint(0, 255)
         green = "%02x" % random.randint(0, 255)
         blue = "%02x" % random.randint(0, 255)
-        fill_color = "#" + red + green + blue
-        super().draw(fill_color)
+        self.fill_color = "#" + red + green + blue
+        super().draw(self.fill_color)
+
+    def move_up_in_line(self, new_center: Point):
+        self.center = new_center
+        self.top_left = Point(self.center.x - (self.x_length / 2), self.center.y - (self.y_length / 2))
+        self.bottom_right = Point(self.center.x + (self.x_length / 2), self.center.y + (self.y_length / 2))
+        super().draw(self.fill_color)
