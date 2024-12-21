@@ -1,8 +1,5 @@
-import os, sys
-sys.path.insert(0, os.path.join(os.getcwd()))
-
-from graphics import *
-from cell_matrix import *
+from common.graphics import *
+from common.cell_matrix import *
 import time
 
 class BFSMatrix(CellMatrix):

@@ -20,6 +20,6 @@ The proper spelling is obviously visuali***Z***ation, but then I couldn't vizual
 
 # How to visualize
 
-Each subfolder is the name of a data structure or algorithm. Run the main.py file in the subfolder to watch the magic.
+Each subfolder is the name of a data structure or algorithm. Run the main.py file in the subfolder to watch the magic. (main.py must be run from project directory.)
 
 The main.py file includes "tuneables" so grandma can have fun too - or you can just jump right into the algo itself.

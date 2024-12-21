@@ -1,7 +1,8 @@
 import os, sys
-sys.path.insert(0, os.path.join(os.getcwd()))
+sys.path.insert(1, os.path.join(os.getcwd()))
+sys.path.insert(1, os.path.join(os.getcwd(), "common"))
 
-from graphics import Window
+from common.graphics import Window
 from dfs_matrix import DFSMatrix
 
 def main():

@@ -1,7 +1,7 @@
 import os, sys
-sys.path.insert(0, os.path.join(os.getcwd()))
+sys.path.insert(1, os.path.join(os.getcwd()))
 
-from graphics import Window
+from common.graphics import Window
 from dirty_dishes import DirtyDishes
 
 def main():
