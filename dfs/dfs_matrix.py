@@ -11,9 +11,7 @@ class DFSMatrix(CellMatrix):
         self.is_random = is_random
         if seed is not None:
             random.seed(seed)
-
-        self.starting_cell = self.cell_matrix[start_i][start_j]
-        self.search_r(self.starting_cell)
+        self.search_r(self.cell_matrix[start_i][start_j])
 
     def search_r(self, current_cell: Cell, direction: str = None):
         first_pass = True
