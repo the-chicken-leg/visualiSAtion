@@ -16,7 +16,6 @@ def main():
 
     window = Window(window_width, window_height)
     snackshack_queue = SnackshackQueue(window, starting_num_patrons, patron_fatbody_index)
-    input("Press Enter to continue")
     snackshack_queue.simulate(push_pop_ratio, sleep_time, stop_when_empty)
     window.wait_for_close()
 
