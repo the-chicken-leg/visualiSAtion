@@ -19,4 +19,5 @@ def main():
     dirty_dishes.simulate(push_pop_ratio, sleep_time, stop_when_empty)
     window.wait_for_close()
 
-main()
+if __name__ == "__main__":
+    main()

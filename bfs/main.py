@@ -20,4 +20,5 @@ def main():
     bfs_matrix.search(start_i, start_j, sleep_time, show_numbers)
     window.wait_for_close()
 
-main()
+if __name__ == "__main__":
+    main()

@@ -22,4 +22,5 @@ def main():
     dfs_matrix.search(start_i, start_j, sleep_time, is_random, seed)
     window.wait_for_close()
 
-main()
+if __name__ == "__main__":
+    main()
