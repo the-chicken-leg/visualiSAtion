@@ -2,6 +2,10 @@
 
 The proper spelling is obviously visuali***Z***ation, but then I couldn't vizualize the (data) ***S***tructures and ***A***lgorithms... get it?
 
+Each subfolder is the name of a data structure or algorithm and contains a main.py file which you can run to watch the magic - run the main.py file from the project root folder so that the PYTHONPATH is correct.
+
+The main.py file includes "tuneables" so grandma can have fun too - or you can just jump right into the algo itself.
+
 ## DFS random
 
 ![dfs random gif](/media/dfs_random.gif)
@@ -25,9 +29,3 @@ The proper spelling is obviously visuali***Z***ation, but then I couldn't vizual
 ## Red-black tree
 
 ![red-black tree gif](/media/red_black_tree.gif)
-
-# How to visualize
-
-Each subfolder is the name of a data structure or algorithm and contains a main.py file which you can run to watch the magic - run the main.py file from the project root folder so that the PYTHONPATH is correct.
-
-The main.py file includes "tuneables" so grandma can have fun too - or you can just jump right into the algo itself.
