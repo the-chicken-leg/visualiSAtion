@@ -23,7 +23,7 @@ class BFSMatrix(CellMatrix):
             
             if show_numbers:
                 for neighbor in neighbors_to_search:
-                    neighbor.search_num_text = Text(self.parent, neighbor.center, str(search_num))
+                    neighbor.search_num_text = Text(self.parent, str(search_num), neighbor.center)
                     neighbor.search_num_text.draw()
                     self.parent.redraw()
                     time.sleep(sleep_time)
