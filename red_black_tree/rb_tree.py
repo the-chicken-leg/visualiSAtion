@@ -23,7 +23,7 @@ class RBTree:
         elif self.insertion_type == "custom":
             self.node_values = self.custom_insertion
 
-    def draw_in_window(self, window: Window, step_manually: bool, sleep_time: int):
+    def draw_in_window(self, window: Window, step_manually: bool, sleep_time: float):
         self.window = window
         self.step_manually = step_manually
         self.sleep_time = sleep_time

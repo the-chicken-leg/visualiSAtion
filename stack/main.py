@@ -9,14 +9,14 @@ def main():
     window_width = 800
     window_height = 800
     starting_num_dishes = 15
-    single_dish_height = 25
     push_pop_ratio = 0.75
-    sleep_time = 0.2
     stop_when_empty = True
+    single_dish_height = 25
+    sleep_time = 0.2
 
     window = Window(window_width, window_height)
-    dirty_dishes = DirtyDishes(window, starting_num_dishes, single_dish_height)
-    dirty_dishes.simulate(push_pop_ratio, sleep_time, stop_when_empty)
+    dirty_dishes = DirtyDishes(starting_num_dishes, push_pop_ratio, stop_when_empty)
+    dirty_dishes.draw_in_window(window, single_dish_height, sleep_time)
     window.wait_for_close()
 
 if __name__ == "__main__":
