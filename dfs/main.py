@@ -15,7 +15,7 @@ def main():
     start_j = 7
     sleep_time = 0.05
     is_random = True
-    seed = None
+    seed = None         # ignored if is_random is False
 
     sys.setrecursionlimit(10000)
     window = Window(window_width, window_height)

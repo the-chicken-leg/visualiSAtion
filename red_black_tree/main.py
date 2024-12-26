@@ -11,7 +11,7 @@ def main():
     insertion_type = "random"   # "ascending", "descending", "random", or "custom"
     num_nodes = 15              # ignored if "custom" insertion_type
     custom_insertion = [5, 1, 5, 8, 6, 4, 5, 10, 3, 9]      # ignored if not "custom" insertion_type
-    step_manually = True        # can navigate with right and left arrow keys
+    step_manually = False        # can navigate with right and left arrow keys
     sleep_time = 1
 
     window = Window(window_width, window_height)
