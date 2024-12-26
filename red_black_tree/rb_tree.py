@@ -63,10 +63,9 @@ class RBTree:
         insertion_order = Text(
             self.window,
             f"Insertion order: {str(self.node_values).strip("[]")}",
-            Point(self.window.width / 2, 25),
         )
-        insertion_order.draw()
-        
+        insertion_order.draw(Point(self.window.width / 2, 25))
+
         if self.step_manually:
             self.node_index = 1
             self.should_fix = False
@@ -159,10 +158,9 @@ class RBTree:
         action = Text(
             self.window,
             f"{insert_or_fix} {node_value}",
-            Point(self.window.width / 2, 75),
             tags=["action"],
         )
-        action.draw()
+        action.draw(Point(self.window.width / 2, 75))
         self.root_node.draw_tree()
         if not self.step_manually:
             self.window.redraw()

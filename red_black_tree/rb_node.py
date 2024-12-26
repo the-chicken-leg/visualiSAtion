@@ -13,18 +13,13 @@ class RBNode(Circle):
         self.right_child = None
 
         self.cell_size = 50
-        self.node_radius = 20
         self.root_center = Point(self.window.width / 2, self.cell_size / 2 + 100)
 
     def draw(self, center: Point):
-        self.center = center
-        self.top_left = Point(center.x - self.node_radius, center.y - self.node_radius)
-        self.bottom_right = Point(center.x + self.node_radius, center.y + self.node_radius)
-
         fill_color = "black"
         if self.red:
             fill_color = "red"
-        super().draw(fill_color)
+        super().draw(center, 20, fill_color)
 
     def draw_tree(self):
         self.draw_nodes(self.value)
@@ -37,13 +32,8 @@ class RBNode(Circle):
             self.node_center_x = self.root_center.x + self.cell_size * (self.value - root_value)
             self.node_center_y = self.root_center.y + (self.cell_size * level)
             self.draw(Point(self.node_center_x, self.node_center_y))
-            node_text = Text(
-                self.window,
-                str(self.value),
-                Point(self.node_center_x, self.node_center_y),
-                tags=["text", "tree"],
-            )
-            node_text.draw(fill_color="white")
+            node_text = Text(self.window, str(self.value), tags=["text", "tree"])
+            node_text.draw(Point(self.node_center_x, self.node_center_y), fill_color="white")
 
             self.left_child.draw_nodes(root_value, level + 1)
 
@@ -52,20 +42,22 @@ class RBNode(Circle):
             if rb_node.left_child.value:
                 line_to_left_child = SolidLine(
                     rb_node.window,
-                    Point(rb_node.node_center_x, rb_node.node_center_y),
-                    Point(rb_node.left_child.node_center_x, rb_node.left_child.node_center_y),
                     tags=["lines", "tree"],
                 )
-                line_to_left_child.draw()
+                line_to_left_child.draw(
+                    Point(rb_node.node_center_x, rb_node.node_center_y),
+                    Point(rb_node.left_child.node_center_x, rb_node.left_child.node_center_y),
+                )
 
             if rb_node.right_child.value:
                 line_to_right_child = SolidLine(
-                    rb_node.window,
-                    Point(rb_node.node_center_x, rb_node.node_center_y),
-                    Point(rb_node.right_child.node_center_x, rb_node.right_child.node_center_y),
+                    rb_node.window,    
                     tags=["lines", "tree"],
                 )
-                line_to_right_child.draw()
+                line_to_right_child.draw(
+                    Point(rb_node.node_center_x, rb_node.node_center_y),
+                    Point(rb_node.right_child.node_center_x, rb_node.right_child.node_center_y),
+                )
 
         self.window.canvas.tag_lower("lines", "text")
         self.window.canvas.tag_lower("lines", "nodes")
