@@ -1,4 +1,3 @@
-# from common.graphics import *
 from dish import *
 import random
 
