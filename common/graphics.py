@@ -35,7 +35,7 @@ class Point:
         self.x = x
         self.y = y
 
-class MyButton:
+class CanvasButton:
     def __init__(
         self,
         parent: Window,
@@ -56,18 +56,18 @@ class MyButton:
         )
 
 class SolidLine:
-    def __init__(self, parent: Window, tags: list = None):
-        self.parent = parent
+    def __init__(self, tags: list = None):
         self.tags = tags
 
     def draw(
         self,
+        parent: Window,
         point1: Point,
         point2: Point,
         fill_color: str = "black",
         width: int = 2,
     ):
-        self.id = self.parent.canvas.create_line(
+        self.id = parent.canvas.create_line(
             point1.x,
             point1.y,
             point2.x,
@@ -78,18 +78,18 @@ class SolidLine:
         )
 
 class DashedLine:
-    def __init__(self, parent: Window, tags: list = None):
-        self.parent = parent
+    def __init__(self, tags: list = None):
         self.tags = tags
 
     def draw(
         self,
+        parent: Window,
         point1: Point,
         point2: Point,        
         fill_color: str = "black",
         width: int = 2,
     ):
-        self.id = self.parent.canvas.create_line(
+        self.id = parent.canvas.create_line(
             point1.x,
             point1.y,
             point2.x,
@@ -101,12 +101,12 @@ class DashedLine:
         )
 
 class Rectangle:
-    def __init__(self, parent: Window, tags: list = None):
-        self.parent = parent
+    def __init__(self, tags: list = None):
         self.tags = tags
 
     def draw(
         self,
+        parent: Window,
         center: Point,
         x_length: int,
         y_length: int,        
@@ -114,7 +114,7 @@ class Rectangle:
     ):
         top_left = Point(center.x - (x_length / 2), center.y - (y_length / 2))
         bottom_right = Point(center.x + (x_length / 2), center.y + (y_length / 2))        
-        self.id = self.parent.canvas.create_rectangle(
+        self.id = parent.canvas.create_rectangle(
             top_left.x,
             top_left.y,
             bottom_right.x,
@@ -124,19 +124,19 @@ class Rectangle:
         )
 
 class Square:
-    def __init__(self, parent: Window, tags: list = None):
-        self.parent = parent
+    def __init__(self, tags: list = None):
         self.tags = tags
 
     def draw(
         self,
+        parent: Window,
         center: Point,
         side_length: int,        
         fill_color: str = "black",
     ):
         top_left = Point(center.x - (side_length / 2), center.y - (side_length / 2))
         bottom_right = Point(center.x + (side_length / 2), center.y + (side_length / 2))        
-        self.id = self.parent.canvas.create_rectangle(
+        self.id = parent.canvas.create_rectangle(
             top_left.x,
             top_left.y,
             bottom_right.x,
@@ -146,19 +146,19 @@ class Square:
         )
 
 class Circle:
-    def __init__(self, parent: Window, tags: list = None):
-        self.parent = parent
+    def __init__(self, tags: list = None):
         self.tags = tags
 
     def draw(
         self,
+        parent: Window,
         center: Point,
         radius: int,
         fill_color: str = "black",
     ):
         top_left = Point(center.x - radius, center.y - radius)
         bottom_right = Point(center.x + radius, center.y + radius)        
-        self.id = self.parent.canvas.create_oval(
+        self.id = parent.canvas.create_oval(
             top_left.x,
             top_left.y,
             bottom_right.x,
@@ -168,35 +168,35 @@ class Circle:
         )
 
 class BigX:
-    def __init__(self, parent: Window, tags: list = None):
-        self.parent = parent
+    def __init__(self, tags: list = None):
         self.tags = tags
 
     def draw(
         self,
+        parent: Window,
         center: Point,
         radius: int,        
         fill_color: str = "black",
         width: int = 7,
     ):
-        forward_slash = SolidLine(self.parent, tags=self.tags)
-        back_slash = SolidLine(self.parent, tags=self.tags)
+        forward_slash = SolidLine(tags=self.tags)
+        back_slash = SolidLine(tags=self.tags)
 
         top_left = Point(center.x - radius, center.y - radius)
         top_right = Point(center.x + radius, center.y - radius)
         bottom_right = Point(center.x + radius, center.y + radius)
         bottom_left = Point(center.x - radius, center.y + radius)
 
-        self.id_forward_slash = forward_slash.draw(top_right, bottom_left, fill_color, width)
-        self.id_back_slash = back_slash.draw(top_left, bottom_right, fill_color, width)
+        self.id_forward_slash = forward_slash.draw(parent, top_right, bottom_left, fill_color, width)
+        self.id_back_slash = back_slash.draw(parent, top_left, bottom_right, fill_color, width)
 
 class Triangle:
-    def __init__(self, parent: Window, tags: list = None):
-        self.parent = parent
+    def __init__(self, tags: list = None):
         self.tags = tags
 
     def draw(
         self,
+        parent: Window,
         center: Point,
         radius: int,
         fill_color: str = "black",
@@ -204,7 +204,7 @@ class Triangle:
         top = Point(center.x, center.y - radius)
         bottom_right = Point(center.x + radius, center.y + radius)
         bottom_left = Point(center.x - radius, center.y + radius)        
-        self.id = self.parent.canvas.create_polygon(
+        self.id = parent.canvas.create_polygon(
             top.x,
             top.y,
             bottom_right.x,
@@ -216,18 +216,18 @@ class Triangle:
         )
 
 class Text:
-    def __init__(self, parent: Window, text: str, tags: list = None):
-        self.parent = parent
+    def __init__(self, text: str, tags: list = None):
         self.text = text
         self.tags = tags
 
     def draw(
         self,
+        parent: Window,
         center: Point,        
         fill_color: str = "black",
         font_size: int = 16,
     ):
-        self.id = self.parent.canvas.create_text(
+        self.id = parent.canvas.create_text(
             center.x,
             center.y,
             font=("Tahoma", font_size),
