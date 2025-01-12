@@ -10,8 +10,8 @@ class BFSMatrix(CellMatrix):
         while to_search:
             current_cell = to_search.pop(0)
             current_cell.searched = True
-            current_cell.draw()
-            self.parent.redraw()
+            current_cell.draw(self.window, self.cell_size)
+            self.window.redraw()
             time.sleep(sleep_time)
 
             neighbors = self.get_cell_neighbors(current_cell.i, current_cell.j)
@@ -23,9 +23,9 @@ class BFSMatrix(CellMatrix):
             
             if show_numbers:
                 for neighbor in neighbors_to_search:
-                    neighbor.search_num_text = Text(self.parent, str(search_num), neighbor.center)
-                    neighbor.search_num_text.draw()
-                    self.parent.redraw()
+                    neighbor.search_num_text = Text(str(search_num))
+                    neighbor.search_num_text.draw(self.window, neighbor.center)
+                    self.window.redraw()
                     time.sleep(sleep_time)
                     search_num += 1
 

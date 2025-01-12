@@ -35,7 +35,7 @@ class Point:
         self.x = x
         self.y = y
 
-class MyButton:
+class CanvasButton:
     def __init__(
         self,
         parent: Window,
@@ -56,50 +56,44 @@ class MyButton:
         )
 
 class SolidLine:
-    def __init__(
+    def __init__(self, tags: list = None):
+        self.tags = tags
+
+    def draw(
         self,
         parent: Window,
-        point1: Point = None,
-        point2: Point = None,
-        tags: list = None,
+        point1: Point,
+        point2: Point,
+        fill_color: str = "black",
+        width: int = 2,
     ):
-        self.parent = parent
-        self.tags = tags
-        if (point1 and point2) is not None:
-            self.point1 = point1
-            self.point2 = point2
-
-    def draw(self, fill_color: str = "black", width: int = 2):
-        self.id = self.parent.canvas.create_line(
-            self.point1.x,
-            self.point1.y,
-            self.point2.x,
-            self.point2.y,
+        self.id = parent.canvas.create_line(
+            point1.x,
+            point1.y,
+            point2.x,
+            point2.y,
             fill=fill_color,
             width=width,
             tags=self.tags,
         )
 
 class DashedLine:
-    def __init__(
+    def __init__(self, tags: list = None):
+        self.tags = tags
+
+    def draw(
         self,
         parent: Window,
-        point1: Point = None,
-        point2: Point = None,
-        tags: list = None,
+        point1: Point,
+        point2: Point,        
+        fill_color: str = "black",
+        width: int = 2,
     ):
-        self.parent = parent
-        self.tags = tags
-        if (point1 and point2) is not None:
-            self.point1 = point1
-            self.point2 = point2
-
-    def draw(self, fill_color: str = "black", width: int = 2):
-        self.id = self.parent.canvas.create_line(
-            self.point1.x,
-            self.point1.y,
-            self.point2.x,
-            self.point2.y,
+        self.id = parent.canvas.create_line(
+            point1.x,
+            point1.y,
+            point2.x,
+            point2.y,
             fill=fill_color,
             width=width,
             dash=10,
@@ -107,160 +101,135 @@ class DashedLine:
         )
 
 class Rectangle:
-    def __init__(
+    def __init__(self, tags: list = None):
+        self.tags = tags
+
+    def draw(
         self,
         parent: Window,
-        center: Point = None,
-        x_length: int = None,
-        y_length: int = None,
-        tags: list = None,
+        center: Point,
+        x_length: int,
+        y_length: int,        
+        fill_color: str = "black",
     ):
-        self.parent = parent
-        self.tags = tags
-        if (center and x_length and y_length) is not None:
-            self.center = center
-            self.x_length = x_length
-            self.y_length = y_length
-            self.top_left = Point(center.x - (x_length / 2), center.y - (y_length / 2))
-            self.bottom_right = Point(center.x + (x_length / 2), center.y + (y_length / 2))
-
-    def draw(self, fill_color: str = "black"):
-        self.id = self.parent.canvas.create_rectangle(
-            self.top_left.x,
-            self.top_left.y,
-            self.bottom_right.x,
-            self.bottom_right.y,
+        top_left = Point(center.x - (x_length / 2), center.y - (y_length / 2))
+        bottom_right = Point(center.x + (x_length / 2), center.y + (y_length / 2))        
+        self.id = parent.canvas.create_rectangle(
+            top_left.x,
+            top_left.y,
+            bottom_right.x,
+            bottom_right.y,
             fill=fill_color,
             tags=self.tags,
         )
 
 class Square:
-    def __init__(
+    def __init__(self, tags: list = None):
+        self.tags = tags
+
+    def draw(
         self,
         parent: Window,
-        center: Point = None,
-        side_length: int = None,
-        tags: list = None,
+        center: Point,
+        side_length: int,        
+        fill_color: str = "black",
     ):
-        self.parent = parent
-        self.tags = tags
-        if (center and side_length) is not None:
-            self.center = center
-            self.top_left = Point(center.x - (side_length / 2), center.y - (side_length / 2))
-            self.bottom_right = Point(center.x + (side_length / 2), center.y + (side_length / 2))
-
-    def draw(self, fill_color: str = "black"):
-        self.id = self.parent.canvas.create_rectangle(
-            self.top_left.x,
-            self.top_left.y,
-            self.bottom_right.x,
-            self.bottom_right.y,
+        top_left = Point(center.x - (side_length / 2), center.y - (side_length / 2))
+        bottom_right = Point(center.x + (side_length / 2), center.y + (side_length / 2))        
+        self.id = parent.canvas.create_rectangle(
+            top_left.x,
+            top_left.y,
+            bottom_right.x,
+            bottom_right.y,
             fill=fill_color,
             tags=self.tags,
         )
 
 class Circle:
-    def __init__(
+    def __init__(self, tags: list = None):
+        self.tags = tags
+
+    def draw(
         self,
         parent: Window,
-        center: Point = None,
-        radius: int = None,
-        tags: list = None,
+        center: Point,
+        radius: int,
+        fill_color: str = "black",
     ):
-        self.parent = parent
-        self.tags = tags
-        if (center and radius) is not None:
-            self.center = center
-            self.top_left = Point(center.x - radius, center.y - radius)
-            self.bottom_right = Point(center.x + radius, center.y + radius)
-
-    def draw(self, fill_color: str = "black"):
-        self.id = self.parent.canvas.create_oval(
-            self.top_left.x,
-            self.top_left.y,
-            self.bottom_right.x,
-            self.bottom_right.y,
+        top_left = Point(center.x - radius, center.y - radius)
+        bottom_right = Point(center.x + radius, center.y + radius)        
+        self.id = parent.canvas.create_oval(
+            top_left.x,
+            top_left.y,
+            bottom_right.x,
+            bottom_right.y,
             fill=fill_color,
             tags=self.tags,
         )
 
 class BigX:
-    def __init__(
+    def __init__(self, tags: list = None):
+        self.tags = tags
+
+    def draw(
         self,
         parent: Window,
-        center: Point = None,
-        radius: int = None,
-        tags: list = None,
+        center: Point,
+        radius: int,        
+        fill_color: str = "black",
+        width: int = 7,
     ):
-        self.parent = parent
-        self.tags = tags
-        if (center and radius) is not None:
-            self.top_left = Point(center.x - radius, center.y - radius)
-            self.top_right = Point(center.x + radius, center.y - radius)
-            self.bottom_right = Point(center.x + radius, center.y + radius)
-            self.bottom_left = Point(center.x - radius, center.y + radius)
+        forward_slash = SolidLine(tags=self.tags)
+        back_slash = SolidLine(tags=self.tags)
 
-    def draw(self, fill_color: str = "black", width: int = 7):
-        forward_slash = SolidLine(
-            self.parent,
-            self.bottom_left,
-            self.top_right,
-            tags=self.tags,
-        )
-        back_slash = SolidLine(
-            self.parent,
-            self.bottom_right,
-            self.top_left,
-            tags=self.tags,
-        )
-        self.id1 = forward_slash.draw(fill_color, width)
-        self.id2 = back_slash.draw(fill_color, width)
+        top_left = Point(center.x - radius, center.y - radius)
+        top_right = Point(center.x + radius, center.y - radius)
+        bottom_right = Point(center.x + radius, center.y + radius)
+        bottom_left = Point(center.x - radius, center.y + radius)
+
+        self.id_forward_slash = forward_slash.draw(parent, top_right, bottom_left, fill_color, width)
+        self.id_back_slash = back_slash.draw(parent, top_left, bottom_right, fill_color, width)
 
 class Triangle:
-    def __init__(
+    def __init__(self, tags: list = None):
+        self.tags = tags
+
+    def draw(
         self,
         parent: Window,
-        center: Point = None,
-        radius: int = None,
-        tags: list = None,
+        center: Point,
+        radius: int,
+        fill_color: str = "black",
     ):
-        self.parent = parent
-        self.tags = tags
-        if (center and radius) is not None:
-            self.top = Point(center.x, center.y - radius)
-            self.bottom_right = Point(center.x + radius, center.y + radius)
-            self.bottom_left = Point(center.x - radius, center.y + radius)
-
-    def draw(self, fill_color: str = "black"):
-        self.id = self.parent.canvas.create_polygon(
-            self.top.x,
-            self.top.y,
-            self.bottom_right.x,
-            self.bottom_right.y,
-            self.bottom_left.x,
-            self.bottom_left.y,
+        top = Point(center.x, center.y - radius)
+        bottom_right = Point(center.x + radius, center.y + radius)
+        bottom_left = Point(center.x - radius, center.y + radius)        
+        self.id = parent.canvas.create_polygon(
+            top.x,
+            top.y,
+            bottom_right.x,
+            bottom_right.y,
+            bottom_left.x,
+            bottom_left.y,
             fill=fill_color,
             tags=self.tags,
         )
 
 class Text:
-    def __init__(
-        self,
-        parent: Window,
-        text: str,
-        center: Point = None,
-        tags: list = None,
-    ):
-        self.parent = parent
+    def __init__(self, text: str, tags: list = None):
         self.text = text
         self.tags = tags
-        if center is not None:
-            self.center = center
 
-    def draw(self, fill_color: str = "black", font_size: int = 16):
-        self.id = self.parent.canvas.create_text(
-            self.center.x,
-            self.center.y,
+    def draw(
+        self,
+        parent: Window,
+        center: Point,        
+        fill_color: str = "black",
+        font_size: int = 16,
+    ):
+        self.id = parent.canvas.create_text(
+            center.x,
+            center.y,
             font=("Tahoma", font_size),
             fill=fill_color,
             justify="center",

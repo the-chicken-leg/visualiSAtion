@@ -3,49 +3,12 @@ import random
 import time
 
 class RBTree:
-    def __init__(
-        self,
-        window: Window,
-        insertion_type: str,
-        num_nodes: int,
-        custom_insertion: list,
-        step_manually: bool,
-        sleep_time: int,
-    ):
-        self.window = window
-
-        self.step_manually = step_manually
-        if step_manually:
-            self.forward_button = MyButton(
-                window,
-                "Forward",
-                self.step_forward,
-                ["buttons"],
-            )
-            self.window.root.bind(
-                "<Right>",
-                lambda x: self.forward_button.button.invoke(),
-            )
-            self.forward_button.draw(Point(window.width / 2 + 50, window.height - 25))
-            
-            self.back_button = MyButton(
-                window,
-                "Back",
-                self.step_back,
-                ["buttons"],
-            )
-            self.window.root.bind(
-                "<Left>",
-                lambda x: self.back_button.button.invoke(),
-            )
-            self.back_button.draw(Point(window.width / 2 - 50, window.height - 25))
-
+    def __init__(self, insertion_type: str, num_nodes: int, custom_insertion: list):
         self.insertion_type = insertion_type
         self.num_nodes = num_nodes
         self.custom_insertion = custom_insertion
-        self.sleep_time = sleep_time
 
-        self.nil = RBNode(window, None)
+        self.nil = RBNode(None)
 
         self.create_node_values()
 
@@ -60,49 +23,58 @@ class RBTree:
         elif self.insertion_type == "custom":
             self.node_values = self.custom_insertion
 
-        insertion_order = Text(
-            self.window,
-            f"Insertion order: {str(self.node_values).strip("[]")}",
-            Point(self.window.width / 2, 25),
-        )
-        insertion_order.draw()
-        
+    def draw_in_window(self, window: Window, step_manually: bool, sleep_time: float):
+        self.window = window
+        self.step_manually = step_manually
+        self.sleep_time = sleep_time
+
+        insertion_order = Text(f"Insertion order: {str(self.node_values).strip("[]")}")
+        insertion_order.draw(window, Point(window.width / 2, 25))
+
         if self.step_manually:
+            forward_button = CanvasButton(window, "Forward", self.step_forward, ["buttons"])
+            window.root.bind("<Right>", lambda x: forward_button.button.invoke())
+            forward_button.draw(Point(window.width / 2 + 50, window.height - 25))
+            
+            back_button = CanvasButton(window, "Back", self.step_back, ["buttons"])
+            window.root.bind("<Left>", lambda x: back_button.button.invoke())
+            back_button.draw(Point(window.width / 2 - 50, window.height - 25))
+
             self.node_index = 1
             self.should_fix = False
-            self.replay(self.should_fix)
+            self.step_draw(self.should_fix)
         else:
-            self.window.redraw()
+            window.redraw()
             time.sleep(self.sleep_time)
-            self.insert_and_fix()
+            self.auto_draw()
 
     def step_forward(self):
-        if self.node_index < len(self.node_values):
+        if self.node_index < self.num_nodes:
             if not self.should_fix:
                 self.should_fix = not self.should_fix
-                self.replay(self.should_fix)
+                self.step_draw(self.should_fix)
             else:
                 self.node_index += 1
                 self.should_fix = not self.should_fix
-                self.replay(self.should_fix)
-        elif self.node_index == len(self.node_values):
+                self.step_draw(self.should_fix)
+        elif self.node_index == self.num_nodes:
             self.should_fix = True
-            self.replay(self.should_fix)
+            self.step_draw(self.should_fix)
 
     def step_back(self):
         if self.node_index > 1:
             if not self.should_fix:
                 self.node_index -= 1
                 self.should_fix = not self.should_fix
-                self.replay(self.should_fix)
+                self.step_draw(self.should_fix)
             else:
                 self.should_fix = not self.should_fix
-                self.replay(self.should_fix)
+                self.step_draw(self.should_fix)
         elif self.node_index == 1:
             self.should_fix = False
-            self.replay(self.should_fix)
+            self.step_draw(self.should_fix)
 
-    def replay(self, should_fix: bool):
+    def step_draw(self, should_fix: bool):
         self.root_node = self.nil
         for node_value in self.node_values[:self.node_index]:
             self.insert(node_value)
@@ -116,7 +88,7 @@ class RBTree:
         if should_fix:
             self.draw(node_value, "fix")
 
-    def insert_and_fix(self):
+    def auto_draw(self):
         self.root_node = self.nil
         for node_value in self.node_values:
             self.insert(node_value)
@@ -128,8 +100,17 @@ class RBTree:
                 pass
             self.draw(node_value, "fix")
 
+    def draw(self, node_value: int, insert_or_fix: str):
+        self.window.canvas.delete("action", "tree")
+        action = Text(f"{insert_or_fix} {node_value}",tags=["action"])
+        action.draw(self.window, Point(self.window.width / 2, 75))
+        self.root_node.draw_tree(self.window)
+        if not self.step_manually:
+            self.window.redraw()
+            time.sleep(self.sleep_time)
+
     def insert(self, node_value: int):
-        self.new_node = RBNode(self.window, node_value)
+        self.new_node = RBNode(node_value)
         self.new_node.red = True
         self.new_node.left_child = self.nil
         self.new_node.right_child = self.nil
@@ -153,20 +134,6 @@ class RBTree:
             parent.left_child = self.new_node
         elif self.new_node.value > parent.value:
             parent.right_child = self.new_node
-
-    def draw(self, node_value: int, insert_or_fix: str):
-        self.window.canvas.delete("action", "tree")
-        action = Text(
-            self.window,
-            f"{insert_or_fix} {node_value}",
-            Point(self.window.width / 2, 75),
-            tags=["action"],
-        )
-        action.draw()
-        self.root_node.draw_tree()
-        if not self.step_manually:
-            self.window.redraw()
-            time.sleep(self.sleep_time)
 
     def fix(self, new_node: RBNode):
         while new_node != self.root_node and new_node.parent_node.red:

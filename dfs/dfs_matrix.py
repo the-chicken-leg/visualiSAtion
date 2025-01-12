@@ -17,29 +17,29 @@ class DFSMatrix(CellMatrix):
         first_pass = True
         while True:
             current_cell.searched = True
-            current_cell.draw()
+            current_cell.draw(self.window, self.cell_size)
             if current_cell.i == self.start_i and current_cell.j == self.start_j:
-                start_end_point = Circle(self.parent, current_cell.center, 10)
-                start_end_point.draw("lime green")
+                start_end_point = Circle()
+                start_end_point.draw(self.window, current_cell.center, 10, "lime green")
             if direction and first_pass:
                 previous_cell = self.get_previous_cell(current_cell.i, current_cell.j, direction)
-                track_up_stack = SolidLine(self.parent, current_cell.center, previous_cell.center)
-                track_up_stack.draw()
-            self.parent.redraw()
+                track_up_stack = SolidLine()
+                track_up_stack.draw(self.window, current_cell.center, previous_cell.center)
+            self.window.redraw()
             time.sleep(self.sleep_time)
 
             neighbors = self.get_cell_neighbors(current_cell.i, current_cell.j)
             to_search = [k for k, v in neighbors.items() if v and v.searched == False]
             if not to_search:
                 if first_pass:
-                    current_cell.draw()
-                    self.parent.redraw()
+                    current_cell.draw(self.window, self.cell_size)
+                    self.window.redraw()
                 return
             
             if not first_pass:
-                breadth_marker = Circle(self.parent, current_cell.center, 10)
-                breadth_marker.draw()
-                self.parent.redraw()
+                breadth_marker = Circle()
+                breadth_marker.draw(self.window, current_cell.center, 10)
+                self.window.redraw()
 
             if self.is_random:
                 direction = random.choice(to_search)

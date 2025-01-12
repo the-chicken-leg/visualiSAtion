@@ -15,7 +15,8 @@ def main():
     sleep_time = 1
 
     window = Window(window_width, window_height)
-    RBTree(window, insertion_type, num_nodes, custom_insertion, step_manually, sleep_time)
+    rb_tree = RBTree(insertion_type, num_nodes, custom_insertion)
+    rb_tree.draw_in_window(window, step_manually, sleep_time)
     window.wait_for_close()
 
 if __name__ == "__main__":

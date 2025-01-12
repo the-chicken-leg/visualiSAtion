@@ -1,45 +1,37 @@
-from common.graphics import *
 from dish import *
 import random
 
 class DirtyDishes:
-    def __init__(self, parent: Window, starting_num_dishes: int, single_dish_height: int):
-        self.parent = parent
-        self.starting_num_dishes = starting_num_dishes
+    def __init__(self, starting_num_dishes: int, push_pop_ratio: float, stop_when_empty: bool):
+        self.push_pop_ratio = push_pop_ratio
+        self.stop_when_empty = stop_when_empty
+
+        self.dirty_dishes = [Dish() for i in range(starting_num_dishes)]
+
+    def draw_in_window(self, window: Window, single_dish_height: int, sleep_time: float):
+        self.window = window
         self.single_dish_height = single_dish_height
+        self.sleep_time = sleep_time
 
-        self.create_dirty_dishes()
+        self.center_x = window.width / 2
+        for i, dirty_dish in enumerate(self.dirty_dishes):
+            center_y = window.height - 25 - (0.5 * single_dish_height) - (i * single_dish_height)
+            dirty_dish.draw(window, Point(self.center_x, center_y), single_dish_height)
+        window.redraw()
+        time.sleep(sleep_time)
 
-    def create_dirty_dishes(self):
-        self.dirty_dishes = []
-        self.center_x = self.parent.width / 2
-        for i in range(self.starting_num_dishes):
-            center_y = self.parent.height - 25 - (0.5 * self.single_dish_height) - (i * self.single_dish_height)
-            self.dirty_dishes.append(
-                Dish(
-                    self.parent,
-                    Point(self.center_x, center_y),
-                    self.single_dish_height,
-                )
-            )
+        self.simulate()
 
-        self.draw_dirty_dishes()
-
-    def draw_dirty_dishes(self):
-        for dirty_dish in self.dirty_dishes:
-            dirty_dish.draw()
-            self.parent.redraw()
-
-    def simulate(self, push_pop_ratio: float, sleep_time: float, stop_when_empty: bool):
+    def simulate(self):
         while True:
-            push_or_pop = self.get_push_or_pop(push_pop_ratio)
+            push_or_pop = self.get_push_or_pop(self.push_pop_ratio)
             if push_or_pop == "push":
                 self.push()
             elif push_or_pop == "pop":
                 self.pop()
-            if stop_when_empty and not self.dirty_dishes:
+            if self.stop_when_empty and not self.dirty_dishes:
                 break
-            time.sleep(sleep_time)
+            time.sleep(self.sleep_time)
 
     def get_push_or_pop(self, push_pop_ratio: float) -> str:
         prob_push = push_pop_ratio / (push_pop_ratio + 1)
@@ -49,20 +41,17 @@ class DirtyDishes:
         return "pop"
         
     def push(self):
-        num_dishes = len(self.dirty_dishes)
-        center_y = self.parent.height - 25 - (0.5 * self.single_dish_height) - (num_dishes * self.single_dish_height)
-        new_dish = Dish(
-            self.parent,
-            Point(self.center_x, center_y),
-            self.single_dish_height,
-        )
+        new_dish = Dish()
         self.dirty_dishes.append(new_dish)
-        new_dish.draw()
-        self.parent.redraw()
+
+        num_dishes = len(self.dirty_dishes) - 1
+        center_y = self.window.height - 25 - (0.5 * self.single_dish_height) - (num_dishes * self.single_dish_height)
+        new_dish.draw(self.window, Point(self.center_x, center_y), self.single_dish_height)
+        self.window.redraw()
 
     def pop(self):
         if not self.dirty_dishes:
             return
         clean_this_dish = self.dirty_dishes.pop()
-        self.parent.canvas.delete(clean_this_dish.id)
-        self.parent.redraw()
+        self.window.canvas.delete(clean_this_dish.id)
+        self.window.redraw()
