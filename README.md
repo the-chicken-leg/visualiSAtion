@@ -29,3 +29,7 @@ The main.py file includes "tuneables" so grandma can have fun too - or you can j
 ## Red-black tree
 
 ![red-black tree gif](/media/red_black_tree.gif)
+
+## Bubble sort
+
+![bubble sort gif](/media/bubble_sort.gif)
