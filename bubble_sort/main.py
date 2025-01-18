@@ -3,7 +3,7 @@ sys.path.insert(1, os.path.join(os.getcwd()))
 sys.path.insert(1, os.path.join(os.getcwd(), "common"))
 
 from common.graphics import Window
-from common.things_to_sort import ThingsToSort
+from bubbles import Bubbles
 
 def main():
     # tuneables
@@ -14,8 +14,8 @@ def main():
     sleep_time = 0.05
 
     window = Window(window_width, window_height)
-    things_to_sort = ThingsToSort(window, starting_num_things, thing_width)
-    things_to_sort.bubble_sort(sleep_time)
+    bubbles = Bubbles(window, starting_num_things, thing_width)
+    bubbles.sort(sleep_time)
     window.wait_for_close()
 
 if __name__ == "__main__":
