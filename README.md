@@ -4,7 +4,7 @@ The proper spelling is obviously visuali***Z***ation, but then I couldn't vizual
 
 Each subfolder is the name of a data structure or algorithm and contains a main.py file which you can run to watch the magic - run the main.py file from the project root folder so that the PYTHONPATH is correct.
 
-The main.py file includes "tuneables" so grandma can have fun too - or you can just jump right into the algo itself.
+The main.py file includes "tuneables" - have fun!
 
 ## DFS random
 
