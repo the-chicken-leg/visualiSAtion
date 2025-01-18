@@ -5,22 +5,17 @@ import random
 class ThingsToSort:
     def __init__(self, window: Window, starting_num_things: int, thing_width: int):
         self.window = window
-        self.starting_num_things = starting_num_things
         self.thing_width = thing_width
 
         self.things_to_sort = [
             SortThing(random.randint(50, window.height - 100)) for i in range(starting_num_things)
         ]
 
-        self.draw_initial()
-
-    def draw_initial(self):
-        self.window.redraw()
         for i, sort_thing in enumerate(self.things_to_sort):
-            self.middle_index = self.starting_num_things // 2
-            center_x = self.window.width / 2 + (i - self.middle_index) * self.thing_width
-            sort_thing.draw(self.window, center_x, self.thing_width)
-            self.window.redraw()
+            self.middle_index = starting_num_things // 2
+            center_x = window.width / 2 + (i - self.middle_index) * thing_width
+            sort_thing.draw(window, center_x, thing_width)
+            window.redraw()
             time.sleep(0.05)
 
     def bubble_sort(self, sleep_time: int):

@@ -14,8 +14,7 @@ class SortThing(Rectangle):
         if self.fill_color is None:
             red = "%02x" % 50
             green = "%02x" % 50
-            blue_int = 100 + int((self.value - 50) * ((255 - 100) / ((window.height - 100) - 50)))
-            blue = "%02x" % blue_int
+            blue = "%02x" % int(100 + (self.value - 50) * ((255 - 100) / ((window.height - 100) - 50)))
             self.fill_color = "#" + red + green + blue
 
         super().draw(window, Point(center_x, center_y), thing_width, self.value, self.fill_color)
