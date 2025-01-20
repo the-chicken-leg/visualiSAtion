@@ -11,6 +11,10 @@ class ThingsToSort:
             SortThing(random.randint(50, window.height - 100)) for i in range(starting_num_things)
         ]
 
+        # self.things_to_sort = [
+        #     SortThing(674), SortThing(621), SortThing(395), SortThing(127), SortThing(329), SortThing(530)
+        # ]
+
         for i, sort_thing in enumerate(self.things_to_sort):
             self.middle_index = starting_num_things // 2
             center_x = window.width / 2 + (i - self.middle_index) * thing_width
