@@ -10,7 +10,7 @@ def main():
     window_width = 800
     window_height = 800
     thing_width = 20
-    sleep_time = 0.05
+    sleep_time = 0.04
 
     window = Window(window_width, window_height)
     bubbles = Bubbles(window, thing_width)
