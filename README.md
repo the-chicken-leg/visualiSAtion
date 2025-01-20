@@ -33,3 +33,7 @@ The main.py file includes "tuneables" - have fun!
 ## Bubble sort
 
 ![bubble sort gif](/media/bubble_sort.gif)
+
+## Merge sort
+
+![merge sort gif](/media/merge_sort.gif)
