@@ -15,7 +15,6 @@ def main():
     window = Window(window_width, window_height)
     mergesort_things = MergesortThings(window, thing_width)
     mergesort_things.sort(sleep_time)
-    mergesort_things.remove_highlighter()
     window.wait_for_close()
 
 if __name__ == "__main__":

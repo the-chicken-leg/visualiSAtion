@@ -15,7 +15,6 @@ def main():
     window = Window(window_width, window_height)
     bubbles = Bubbles(window, thing_width)
     bubbles.sort(sleep_time)
-    bubbles.remove_highlighter()
     window.wait_for_close()
 
 if __name__ == "__main__":

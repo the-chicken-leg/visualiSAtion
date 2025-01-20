@@ -19,3 +19,13 @@ class ThingsToSort:
             sort_thing.draw(window, center_x, self.thing_width)
             window.redraw()
             time.sleep(0.05)
+
+    def delete_sort_markers(self):
+        self.window.canvas.delete("sort_indicator", "sort_highlighter")
+
+    def redraw_sort_markers(self, i: int, center_x_i: float):
+        self.delete_sort_markers()
+        sort_indicator = SortIndicator()
+        sort_indicator.draw(self.window, center_x_i)
+        sort_highlighter = SortHighlighter(self.things_to_sort[i])
+        sort_highlighter.draw(self.window, center_x_i, self.thing_width)

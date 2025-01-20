@@ -5,7 +5,8 @@ class MergesortThings(ThingsToSort):
         self.sleep_time = sleep_time
         self.k = 0
         self.merge_sort_r(self.things_to_sort)
-
+        self.delete_sort_markers()
+        
     def merge_sort_r(self, list_to_sort: list):
         if len(list_to_sort) < 2:
             return list_to_sort
@@ -47,18 +48,12 @@ class MergesortThings(ThingsToSort):
         for index in range(self.k - len(sorted_combined), self.k):
             self.window.canvas.delete(old_canvas_ids[index])
             
-            center_x_i = self.window.width / 2 + (index - self.middle_index) * self.thing_width
+            center_x_index = self.window.width / 2 + (index - self.middle_index) * self.thing_width
             self.things_to_sort[index] = sorted_combined[index - self.k]
-            self.things_to_sort[index].draw(self.window, center_x_i, self.thing_width)
+            self.things_to_sort[index].draw(self.window, center_x_index, self.thing_width)
 
-            self.window.canvas.delete("sort_indicator")
-            sort_indicator = SortIndicator()
-            sort_indicator.draw(self.window, center_x_i)
-
-            self.window.canvas.delete("sort_highlighter")
-            sort_highlighter = SortHighlighter(self.things_to_sort[index])
-            sort_highlighter.draw(self.window, center_x_i, self.thing_width)                    
-
+            self.redraw_sort_markers(index, center_x_index)
+            
             self.window.redraw()
             time.sleep(self.sleep_time)
 
@@ -67,13 +62,3 @@ class MergesortThings(ThingsToSort):
         for sort_thing in list_of_sort_things:
             ids.append(sort_thing.id)
         return ids
-    
-    def get_values(self, list_of_sort_things: list):
-        values = []
-        for sort_thing in list_of_sort_things:
-            values.append(sort_thing.value)
-        return values
-    
-    def remove_highlighter(self):
-        self.window.canvas.delete("sort_indicator")
-        self.window.canvas.delete("sort_highlighter")
