@@ -9,12 +9,11 @@ def main():
     # tuneables
     window_width = 800
     window_height = 800
-    starting_num_things = 29
-    thing_width = 25
+    thing_width = 20
     sleep_time = 0.05
 
     window = Window(window_width, window_height)
-    bubbles = Bubbles(window, starting_num_things, thing_width)
+    bubbles = Bubbles(window, thing_width)
     bubbles.sort(sleep_time)
     bubbles.remove_highlighter()
     window.wait_for_close()

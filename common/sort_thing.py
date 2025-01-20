@@ -24,7 +24,7 @@ class SortIndicator(Circle):
         super().__init__(tags=["sort_indicator"])
 
     def draw(self, window: Window, center_x: Point):
-        super().draw(window, Point(center_x, 25), 10)
+        super().draw(window, Point(center_x, 25), 8)
 
 class SortHighlighter(Rectangle):
     def __init__(self, sort_thing: SortThing):
