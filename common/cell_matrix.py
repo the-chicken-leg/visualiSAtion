@@ -18,11 +18,7 @@ class CellMatrix:
             center_y = y_border + (0.5 * cell_size) + (i * cell_size)
             for j in range(self.num_columns):
                 center_x = x_border + (0.5 * cell_size) + (j * cell_size)
-                cell = Cell(
-                    i,
-                    j,
-                    Point(center_x, center_y),
-                )
+                cell = Cell(i, j, Point(center_x, center_y))
                 row.append(cell)
             self.cell_matrix.append(row)
 
