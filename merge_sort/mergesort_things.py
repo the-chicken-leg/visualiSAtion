@@ -41,9 +41,9 @@ class MergesortThings(ThingsToSort):
     def draw(self, sorted_combined: list):
         if len(sorted_combined) == 2:
             self.k += 2
-        if len(sorted_combined) == 3:
+        elif len(sorted_combined) == 3:
             self.k += 1
-        old_canvas_ids = self.get_ids(self.things_to_sort)
+        old_canvas_ids = [sort_thing.id for sort_thing in self.things_to_sort]
 
         for index in range(self.k - len(sorted_combined), self.k):
             self.window.canvas.delete(old_canvas_ids[index])
@@ -56,9 +56,3 @@ class MergesortThings(ThingsToSort):
             
             self.window.redraw()
             time.sleep(self.sleep_time)
-
-    def get_ids(self, list_of_sort_things: list):
-        ids = []
-        for sort_thing in list_of_sort_things:
-            ids.append(sort_thing.id)
-        return ids
