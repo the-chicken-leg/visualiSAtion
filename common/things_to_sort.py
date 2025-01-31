@@ -3,16 +3,30 @@ import time
 import random
 
 class ThingsToSort:
-    def __init__(self, window: Window, thing_width: int):
+    def __init__(self, window: Window, thing_width: int, data_order: str, custom_values = list):
         self.window = window
         self.thing_width = thing_width
 
-        num_things = (window.width - 100) // self.thing_width
-
-        self.things_to_sort = [
-            SortThing(random.randint(50, window.height - 100)) for i in range(num_things)
-        ]
-
+        if data_order == "ascending":
+            num_things = (window.width - 100) // self.thing_width
+            self.things_to_sort = sorted(
+                [SortThing(random.randint(50, window.height - 100)) for i in range(num_things)],
+            )
+        elif data_order == "descending":
+            num_things = (window.width - 100) // self.thing_width
+            self.things_to_sort = sorted(
+                [SortThing(random.randint(50, window.height - 100)) for i in range(num_things)],
+                reverse=True,
+            )
+        elif data_order == "random":
+            num_things = (window.width - 100) // self.thing_width
+            self.things_to_sort = [
+                SortThing(random.randint(50, window.height - 100)) for i in range(num_things)
+            ]
+        elif data_order == "custom":
+            num_things = len(custom_values)
+            self.things_to_sort = [SortThing(custom_value) for custom_value in custom_values]
+            
         for i, sort_thing in enumerate(self.things_to_sort):
             self.middle_index = num_things // 2
             center_x = window.width / 2 + (i - self.middle_index) * self.thing_width

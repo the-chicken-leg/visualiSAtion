@@ -1,5 +1,7 @@
 from graphics import *
+import functools
 
+@functools.total_ordering
 class SortThing(Rectangle):
     def __init__(self, value: int):
         self.value = value
@@ -25,6 +27,12 @@ class SortThing(Rectangle):
             self.fill_color,
         )
 
+    def __eq__(self, other):
+        return self.value == other.value
+    
+    def __lt__(self, other):
+        return self.value < other.value
+    
 class SortIndicator(Circle):
     def __init__(self):
         super().__init__(tags=["sort_indicator"])
