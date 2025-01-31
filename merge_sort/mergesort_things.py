@@ -5,7 +5,7 @@ class MergesortThings(ThingsToSort):
         self.sleep_time = sleep_time
         self.k = 0
         self.merge_sort_r(self.things_to_sort)
-        self.delete_sort_markers()
+        self.delete_all_markers()
         
     def merge_sort_r(self, list_to_sort: list):
         if len(list_to_sort) < 2:
@@ -52,7 +52,7 @@ class MergesortThings(ThingsToSort):
             self.things_to_sort[index] = sorted_combined[index - self.k]
             self.things_to_sort[index].draw(self.window, center_x_index, self.thing_width)
 
-            self.redraw_sort_markers(index, center_x_index)
+            self.redraw_primary_sort_markers(index, center_x_index)
             
             self.window.redraw()
             time.sleep(self.sleep_time)

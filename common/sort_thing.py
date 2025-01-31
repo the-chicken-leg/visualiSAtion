@@ -40,12 +40,44 @@ class SortIndicator(Circle):
     def draw(self, window: Window, center_x: float):
         super().draw(window, Point(center_x, 25), 8)
 
-class SortHighlighter(Rectangle):
+class SortHighlighterRed(Rectangle):
     def __init__(self, sort_thing: SortThing):
         self.value = sort_thing.value
         self.center_y = sort_thing.center_y
-        self.fill_color = "#ff3232"
-        super().__init__(tags=["sort_highlighter"])
+        self.fill_color = "red2"
+        super().__init__(tags=["sort_highlighter_red"])
+
+    def draw(self, window: Window, center_x: float, thing_width: int):
+        super().draw(
+            window,
+            Point(center_x, self.center_y),
+            thing_width,
+            self.value,
+            self.fill_color,
+        )
+
+class SortHighlighterCyan(Rectangle):
+    def __init__(self, sort_thing: SortThing):
+        self.value = sort_thing.value
+        self.center_y = sort_thing.center_y
+        self.fill_color = "cyan2"
+        super().__init__(tags=["sort_highlighter_cyan"])
+
+    def draw(self, window: Window, center_x: float, thing_width: int):
+        super().draw(
+            window,
+            Point(center_x, self.center_y),
+            thing_width,
+            self.value,
+            self.fill_color,
+        )
+
+class SortHighlighterYellow(Rectangle):
+    def __init__(self, sort_thing: SortThing):
+        self.value = sort_thing.value
+        self.center_y = sort_thing.center_y
+        self.fill_color = "yellow2"
+        super().__init__(tags=["sort_highlighter_yellow"])
 
     def draw(self, window: Window, center_x: float, thing_width: int):
         super().draw(

@@ -34,12 +34,27 @@ class ThingsToSort:
             window.redraw()
             time.sleep(0.05)
 
-    def delete_sort_markers(self):
-        self.window.canvas.delete("sort_indicator", "sort_highlighter")
-
-    def redraw_sort_markers(self, i: int, center_x_i: float):
-        self.delete_sort_markers()
+    def delete_all_markers(self):
+        self.window.canvas.delete(
+            "sort_indicator",
+            "sort_highlighter_red",
+            "sort_highlighter_cyan",
+            "sort_highlighter_yellow",
+        )
+        
+    def redraw_primary_sort_markers(self, i: int, center_x_i: float):
+        self.window.canvas.delete("sort_indicator", "sort_highlighter_red")
         sort_indicator = SortIndicator()
         sort_indicator.draw(self.window, center_x_i)
-        sort_highlighter = SortHighlighter(self.things_to_sort[i])
-        sort_highlighter.draw(self.window, center_x_i, self.thing_width)
+        sort_highlighter_red = SortHighlighterRed(self.things_to_sort[i])
+        sort_highlighter_red.draw(self.window, center_x_i, self.thing_width)
+
+    def redraw_highlighter_cyan(self, i: int, center_x_i: float):
+        self.window.canvas.delete("sort_highlighter_cyan")
+        sort_highlighter_cyan = SortHighlighterCyan(self.things_to_sort[i])
+        sort_highlighter_cyan.draw(self.window, center_x_i, self.thing_width)
+
+    def redraw_highlighter_yellow(self, i: int, center_x_i: float):
+        self.window.canvas.delete("sort_highlighter_yellow")
+        sort_highlighter_yellow = SortHighlighterYellow(self.things_to_sort[i])
+        sort_highlighter_yellow.draw(self.window, center_x_i, self.thing_width)
