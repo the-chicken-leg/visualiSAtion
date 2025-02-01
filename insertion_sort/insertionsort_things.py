@@ -16,7 +16,7 @@ class InsertionsortThings(ThingsToSort):
 
     def draw_i(self, i: int):
         center_x_i = self.window.width / 2 + (i - self.middle_index) * self.thing_width
-        self.redraw_highlighter_yellow(i, center_x_i)
+        self.draw_highlighter_yellow(i, center_x_i)
 
         self.window.redraw()
         time.sleep(self.sleep_time)
@@ -32,8 +32,8 @@ class InsertionsortThings(ThingsToSort):
         self.things_to_sort[j].draw(self.window, center_x_j, self.thing_width)
         self.things_to_sort[j - 1].draw(self.window, center_x_j_minus, self.thing_width)
 
-        self.redraw_primary_sort_markers(j - 1, center_x_j_minus)
-        self.redraw_highlighter_yellow(i, center_x_i)
+        self.draw_primary_sort_markers(j - 1, center_x_j_minus)
+        self.draw_highlighter_yellow(i, center_x_i)
 
         self.window.redraw()
         time.sleep(self.sleep_time)

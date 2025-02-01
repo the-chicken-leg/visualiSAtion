@@ -52,7 +52,7 @@ class MergesortThings(ThingsToSort):
             self.things_to_sort[index] = sorted_combined[index - self.k]
             self.things_to_sort[index].draw(self.window, center_x_index, self.thing_width)
 
-            self.redraw_primary_sort_markers(index, center_x_index)
+            self.draw_primary_sort_markers(index, center_x_index)
             
             self.window.redraw()
             time.sleep(self.sleep_time)

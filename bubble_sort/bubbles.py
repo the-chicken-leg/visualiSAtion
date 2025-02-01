@@ -29,11 +29,11 @@ class Bubbles(ThingsToSort):
         self.things_to_sort[i].draw(self.window, center_x_i, self.thing_width)
         self.things_to_sort[i - 1].draw(self.window, center_x_i_minus, self.thing_width)
 
-        self.redraw_primary_sort_markers(i, center_x_i)
+        self.draw_primary_sort_markers(i, center_x_i)
 
         self.window.redraw()
         time.sleep(self.sleep_time)
 
     def draw_end(self, end: int):
         center_x_end = self.window.width / 2 + (end - self.middle_index) * self.thing_width
-        self.redraw_highlighter_yellow(end, center_x_end)
+        self.draw_highlighter_yellow(end, center_x_end)
