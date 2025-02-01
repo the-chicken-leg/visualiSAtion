@@ -41,3 +41,7 @@ The main.py file includes "tuneables" - have fun!
 ## Merge sort
 
 ![merge sort gif](/media/merge_sort.gif)
+
+## Quick sort
+
+![quick sort gif](/media/quick_sort.gif)

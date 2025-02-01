@@ -23,7 +23,7 @@ class MergesortThings(ThingsToSort):
         i = 0
         j = 0
         while i < len(sorted_left_side) and j < len(sorted_right_side):
-            if sorted_left_side[i].value <= sorted_right_side[j].value:
+            if sorted_left_side[i] <= sorted_right_side[j]:
                 sorted_combined.append(sorted_left_side[i])
                 i += 1
             else:

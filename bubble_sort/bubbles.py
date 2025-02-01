@@ -9,7 +9,7 @@ class Bubbles(ThingsToSort):
         while swapping:
             swapping = False
             for i in range(1, end):
-                if self.things_to_sort[i - 1].value > self.things_to_sort[i].value:
+                if self.things_to_sort[i - 1] > self.things_to_sort[i]:
                     temp = self.things_to_sort[i - 1]
                     self.things_to_sort[i - 1] = self.things_to_sort[i]
                     self.things_to_sort[i] = temp
