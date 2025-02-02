@@ -13,11 +13,10 @@ class QuicksortThings(ThingsToSort):
             self.quick_sort_r(list_to_sort, sorted_index + 1, high)
 
     def quick_sort(self, list_to_sort: list, low: int, high: int):
-        pivot = list_to_sort[high]
         i = low
         for j in range(low, high):
             self.draw_markers(i, j, high)
-            if list_to_sort[j] < pivot:
+            if list_to_sort[j] < list_to_sort[high]:
                 list_to_sort[i], list_to_sort[j] = list_to_sort[j], list_to_sort[i]
                 if i != j:
                     self.draw_j_swap(list_to_sort, i, j, high)
@@ -28,9 +27,9 @@ class QuicksortThings(ThingsToSort):
         return i
     
     def draw_markers(self, i: int, j: int, high: int):
-        center_x_high = self.window.width / 2 + (high - self.middle_index) * self.thing_width
-        center_x_i = self.window.width / 2 + (i - self.middle_index) * self.thing_width
-        center_x_j = self.window.width / 2 + (j - self.middle_index) * self.thing_width
+        center_x_high = self.calculate_center(high)
+        center_x_i = self.calculate_center(i)
+        center_x_j = self.calculate_center(j)
 
         self.draw_highlighter_yellow(high, center_x_high)
         self.draw_highlighter_cyan(i, center_x_i)
@@ -43,8 +42,8 @@ class QuicksortThings(ThingsToSort):
         self.window.canvas.delete(list_to_sort[i].id)
         self.window.canvas.delete(list_to_sort[j].id)
 
-        center_x_i = self.window.width / 2 + (i - self.middle_index) * self.thing_width
-        center_x_j = self.window.width / 2 + (j - self.middle_index) * self.thing_width
+        center_x_i = self.calculate_center(i)
+        center_x_j = self.calculate_center(j)
 
         list_to_sort[i].draw(self.window, center_x_i, self.thing_width)
         list_to_sort[j].draw(self.window, center_x_j, self.thing_width)
@@ -55,10 +54,10 @@ class QuicksortThings(ThingsToSort):
         self.window.canvas.delete(list_to_sort[i].id)
         self.window.canvas.delete(list_to_sort[high].id)
 
-        center_x_i = self.window.width / 2 + (i - self.middle_index) * self.thing_width
-        center_x_pivot = self.window.width / 2 + (high - self.middle_index) * self.thing_width
+        center_x_i = self.calculate_center(i)
+        center_x_high = self.calculate_center(high)
 
         list_to_sort[i].draw(self.window, center_x_i, self.thing_width)
-        list_to_sort[high].draw(self.window, center_x_pivot, self.thing_width)
+        list_to_sort[high].draw(self.window, center_x_high, self.thing_width)
 
         self.draw_markers(i, j, high)

@@ -48,7 +48,7 @@ class MergesortThings(ThingsToSort):
         for index in range(self.k - len(sorted_combined), self.k):
             self.window.canvas.delete(old_canvas_ids[index])
             
-            center_x_index = self.window.width / 2 + (index - self.middle_index) * self.thing_width
+            center_x_index = self.calculate_center(index)
             self.things_to_sort[index] = sorted_combined[index - self.k]
             self.things_to_sort[index].draw(self.window, center_x_index, self.thing_width)
 

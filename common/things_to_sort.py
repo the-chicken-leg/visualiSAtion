@@ -29,10 +29,13 @@ class ThingsToSort:
             
         for i, sort_thing in enumerate(self.things_to_sort):
             self.middle_index = num_things // 2
-            center_x = window.width / 2 + (i - self.middle_index) * self.thing_width
+            center_x = self.calculate_center(i)
             sort_thing.draw(window, center_x, self.thing_width)
             window.redraw()
             time.sleep(0.02)
+
+    def calculate_center(self, i: int):
+        return self.window.width / 2 + (i - self.middle_index) * self.thing_width
 
     def delete_all_markers(self):
         self.window.canvas.delete(

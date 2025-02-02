@@ -15,7 +15,7 @@ class InsertionsortThings(ThingsToSort):
         self.delete_all_markers()
 
     def draw_i(self, i: int):
-        center_x_i = self.window.width / 2 + (i - self.middle_index) * self.thing_width
+        center_x_i = self.calculate_center(i)
         self.draw_highlighter_yellow(i, center_x_i)
 
         self.window.redraw()
@@ -25,9 +25,9 @@ class InsertionsortThings(ThingsToSort):
         self.window.canvas.delete(self.things_to_sort[j].id)
         self.window.canvas.delete(self.things_to_sort[j - 1].id)
         
-        center_x_j = self.window.width / 2 + (j - self.middle_index) * self.thing_width
-        center_x_j_minus = self.window.width / 2 + (j - 1 - self.middle_index) * self.thing_width
-        center_x_i = self.window.width / 2 + (i - self.middle_index) * self.thing_width
+        center_x_j = self.calculate_center(j)
+        center_x_j_minus = self.calculate_center(j - 1)
+        center_x_i = self.calculate_center(i)
 
         self.things_to_sort[j].draw(self.window, center_x_j, self.thing_width)
         self.things_to_sort[j - 1].draw(self.window, center_x_j_minus, self.thing_width)
