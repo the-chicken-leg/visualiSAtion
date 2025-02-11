@@ -36,6 +36,10 @@ class ThingsToSort:
 
     def calculate_center(self, i: int):
         return self.window.width / 2 + (i - self.middle_index) * self.thing_width
+    
+    def print_values(self, list_of_sort_things: list):
+        values = [sort_thing.value for sort_thing in list_of_sort_things]
+        print(values)
 
     def delete_all_markers(self):
         self.window.canvas.delete(

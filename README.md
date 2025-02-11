@@ -34,6 +34,10 @@ The main.py file includes "tuneables" - have fun!
 
 ![bubble sort gif](/media/bubble_sort.gif)
 
+## Selection sort
+
+![selection sort gif](/media/selection_sort.gif)
+
 ## Insertion sort
 
 ![insertion sort gif](/media/insertion_sort.gif)
