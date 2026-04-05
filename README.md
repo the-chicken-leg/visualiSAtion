@@ -2,9 +2,33 @@
 
 The proper spelling is obviously visuali***Z***ation, but then I couldn't vizualize the (data) ***S***tructures and ***A***lgorithms... get it?
 
-Each subfolder is the name of a data structure or algorithm and contains a main.py file which you can run to watch the magic - run the main.py file from the project root folder so that the PYTHONPATH is correct.
+Each subfolder is the name of a data structure or algorithm - the _main.py file in each subfolder includes "tuneables" - have fun!
 
-The main.py file includes "tuneables" - have fun!
+## Run on Windows with uv
+
+1. Install uv using PowerShell (full instructions here: https://docs.astral.sh/uv/getting-started/installation):
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+2. Verify uv installed correctly:
+
+```powershell
+uv --version
+```
+
+3. Clone repo (requires git):
+
+```powershell
+git clone https://github.com/the-chicken-leg/visualiSAtion
+```
+
+4. Run using uv. On the first run, uv will download the appropriate python version, create a venv, and install dependencies, which might take some time. Subsequent runs will be faster:
+
+```powershell
+uv run .\visualiSAtion.py
+```
 
 ## Depth-first search random
 
