@@ -6,15 +6,15 @@ Each subfolder is the name of a data structure or algorithm and contains a main.
 
 The main.py file includes "tuneables" - have fun!
 
-## DFS random
+## Depth-first search random
 
 ![dfs random gif](/media/dfs_random.gif)
 
-## DFS non-random
+## Depth-first search non-random
 
 ![dfs non-random gif](/media/dfs_nonrandom.gif)
 
-## BFS
+## Breadth-first search
 
 ![bfs gif](/media/bfs.gif)
 
