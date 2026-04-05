@@ -27,7 +27,7 @@ git clone https://github.com/the-chicken-leg/visualiSAtion
 4. Run using uv. On the first run, uv will download the appropriate python version, create a venv, and install dependencies, which might take some time. Subsequent runs will be faster:
 
 ```powershell
-uv run .\visualiSAtion.py
+uv run .\visualiSAtion.py breadth_first_search
 ```
 
 ## Depth-first search random
