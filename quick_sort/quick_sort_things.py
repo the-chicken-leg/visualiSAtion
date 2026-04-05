@@ -1,6 +1,6 @@
 from common.things_to_sort import *
 
-class QuicksortThings(ThingsToSort):
+class QuickSortThings(ThingsToSort):
     def sort(self, sleep_time: float):
         self.sleep_time = sleep_time
         self.quick_sort_r(self.things_to_sort, 0, len(self.things_to_sort) - 1)

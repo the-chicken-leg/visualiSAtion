@@ -1,11 +1,7 @@
-import os, sys
-sys.path.insert(1, os.path.join(os.getcwd()))
-sys.path.insert(1, os.path.join(os.getcwd(), "common"))
-
+from .quick_sort_things import QuickSortThings
 from common.graphics import Window
-from quicksort_things import QuicksortThings
 
-def main():
+def run_quick_sort():
     # tuneables
     window_width = 800
     window_height = 800
@@ -15,9 +11,6 @@ def main():
     sleep_time = 0.09
 
     window = Window(window_width, window_height)
-    quicksort_things = QuicksortThings(window, thing_width, value_order, custom_values)
+    quicksort_things = QuickSortThings(window, thing_width, value_order, custom_values)
     quicksort_things.sort(sleep_time)
     window.wait_for_close()
-
-if __name__ == "__main__":
-    main()

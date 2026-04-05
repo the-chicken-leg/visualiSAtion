@@ -6,6 +6,7 @@ from depth_first_search.depth_first_search_main import run_depth_first_search
 from insertion_sort.insertion_sort_main import run_insertion_sort
 from merge_sort.merge_sort_main import run_merge_sort
 from queue.queue_main import run_queue
+from quick_sort.quick_sort_main import run_quick_sort
 
 def run_vis():
     DISPATCH = {
@@ -15,6 +16,7 @@ def run_vis():
         "insertion_sort": run_insertion_sort,
         "merge_sort": run_merge_sort,
         "queue": run_queue,
+        "quick_sort": run_quick_sort,
     }
 
     parser = argparse.ArgumentParser(
