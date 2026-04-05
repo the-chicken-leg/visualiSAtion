@@ -1,5 +1,6 @@
-from dish import *
 import random
+
+from .dish import *
 
 class DirtyDishes:
     def __init__(self, starting_num_dishes: int, push_pop_ratio: float, stop_when_empty: bool):

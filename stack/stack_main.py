@@ -1,10 +1,7 @@
-import os, sys
-sys.path.insert(1, os.path.join(os.getcwd()))
-
+from .dirty_dishes import DirtyDishes
 from common.graphics import Window
-from dirty_dishes import DirtyDishes
 
-def main():
+def run_stack():
     # tuneables
     window_width = 800
     window_height = 800
@@ -18,6 +15,3 @@ def main():
     dirty_dishes = DirtyDishes(starting_num_dishes, push_pop_ratio, stop_when_empty)
     dirty_dishes.draw_in_window(window, single_dish_height, sleep_time)
     window.wait_for_close()
-
-if __name__ == "__main__":
-    main()

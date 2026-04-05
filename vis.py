@@ -9,6 +9,7 @@ from queue.queue_main import run_queue
 from quick_sort.quick_sort_main import run_quick_sort
 from red_black_tree.red_black_tree_main import run_red_black_tree
 from selection_sort.selection_sort_main import run_selection_sort
+from stack.stack_main import run_stack
 
 def run_vis():
     DISPATCH = {
@@ -21,6 +22,7 @@ def run_vis():
         "quick_sort": run_quick_sort,
         "red_black_tree": run_red_black_tree,
         "selection_sort": run_selection_sort,
+        "stack": run_stack,
     }
 
     parser = argparse.ArgumentParser(

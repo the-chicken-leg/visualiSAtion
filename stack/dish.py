@@ -1,5 +1,6 @@
-from common.graphics import *
 import random
+
+from common.graphics import *
 
 class Dish(Rectangle):
     def draw(self, window: Window, center: Point, single_dish_height: int):
