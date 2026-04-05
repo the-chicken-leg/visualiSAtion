@@ -26,7 +26,7 @@ def run_vis():
     }
 
     parser = argparse.ArgumentParser(
-        prog="vis.py",
+        prog="visualiSAtion.py",
         description="visualiSAtion of (data) Structures and Algorithms",
     )
     parser.add_argument(
