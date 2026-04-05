@@ -1,11 +1,7 @@
-import os, sys
-sys.path.insert(1, os.path.join(os.getcwd()))
-sys.path.insert(1, os.path.join(os.getcwd(), "common"))
-
+from .selection_sort_things import SelectionSortThings
 from common.graphics import Window
-from selectionsort_things import SelectionsortThings
 
-def main():
+def run_selection_sort():
     # tuneables
     window_width = 800
     window_height = 800
@@ -15,9 +11,6 @@ def main():
     sleep_time = 0.04
 
     window = Window(window_width, window_height)
-    selectionsort_things = SelectionsortThings(window, thing_width, value_order, custom_values)
+    selectionsort_things = SelectionSortThings(window, thing_width, value_order, custom_values)
     selectionsort_things.sort(sleep_time)
     window.wait_for_close()
-
-if __name__ == "__main__":
-    main()
