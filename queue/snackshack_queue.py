@@ -1,5 +1,6 @@
-from hungry_patron import *
 import random
+
+from .hungry_patron import *
 
 class SnackshackQueue:
     def __init__(self, starting_num_patrons: int, push_pop_ratio: float, stop_when_empty: bool):

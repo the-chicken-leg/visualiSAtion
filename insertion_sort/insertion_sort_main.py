@@ -1,11 +1,7 @@
-import os, sys
-sys.path.insert(1, os.path.join(os.getcwd()))
-sys.path.insert(1, os.path.join(os.getcwd(), "common"))
-
+from .insertion_sort_things import InsertionSortThings
 from common.graphics import Window
-from insertionsort_things import InsertionsortThings
 
-def main():
+def run_insertion_sort():
     # tuneables
     window_width = 800
     window_height = 800
@@ -15,9 +11,6 @@ def main():
     sleep_time = 0.06
 
     window = Window(window_width, window_height)
-    insertionsort_things = InsertionsortThings(window, thing_width, value_order, custom_values)
+    insertionsort_things = InsertionSortThings(window, thing_width, value_order, custom_values)
     insertionsort_things.sort(sleep_time)
     window.wait_for_close()
-
-if __name__ == "__main__":
-    main()

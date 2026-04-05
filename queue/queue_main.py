@@ -1,10 +1,7 @@
-import os, sys
-sys.path.insert(1, os.path.join(os.getcwd()))
-
+from .snackshack_queue import SnackshackQueue
 from common.graphics import Window
-from snackshack_queue import SnackshackQueue
 
-def main():
+def run_queue():
     # tuneables
     window_width = 800
     window_height = 800
@@ -18,6 +15,3 @@ def main():
     snackshack_queue = SnackshackQueue(starting_num_patrons, push_pop_ratio, stop_when_empty)
     snackshack_queue.draw_in_window(window, patron_fatbody_width, sleep_time)
     window.wait_for_close()
-
-if __name__ == "__main__":
-    main()

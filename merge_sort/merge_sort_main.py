@@ -1,11 +1,7 @@
-import os, sys
-sys.path.insert(1, os.path.join(os.getcwd()))
-sys.path.insert(1, os.path.join(os.getcwd(), "common"))
-
+from .merge_sort_things import MergeSortThings
 from common.graphics import Window
-from mergesort_things import MergesortThings
 
-def main():
+def run_merge_sort():
     # tuneables
     window_width = 800
     window_height = 800
@@ -15,9 +11,6 @@ def main():
     sleep_time = 0.1
 
     window = Window(window_width, window_height)
-    mergesort_things = MergesortThings(window, thing_width, value_order, custom_values)
+    mergesort_things = MergeSortThings(window, thing_width, value_order, custom_values)
     mergesort_things.sort(sleep_time)
     window.wait_for_close()
-
-if __name__ == "__main__":
-    main()

@@ -1,6 +1,6 @@
 from common.things_to_sort import *
 
-class InsertionsortThings(ThingsToSort):
+class InsertionSortThings(ThingsToSort):
     def sort(self, sleep_time: float):
         self.sleep_time = sleep_time
  
