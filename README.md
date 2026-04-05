@@ -28,6 +28,9 @@ git clone https://github.com/the-chicken-leg/visualiSAtion
 
 ```powershell
 Set-Location .\visualiSAtion\
+```
+
+```powershell
 uv run .\visualiSAtion.py breadth_first_search
 ```
 
