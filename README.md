@@ -2,7 +2,7 @@
 
 The proper spelling is obviously visuali***Z***ation, but then I couldn't vizualize the (data) ***S***tructures and ***A***lgorithms... get it?
 
-Each subfolder is the name of a data structure or algorithm - the _main.py file in each subfolder includes "tuneables" - have fun!
+Each subfolder is the name of a data structure or algorithm. The _main.py file in each subfolder includes "tuneables" - have fun!
 
 ## Run on Windows with uv
 
