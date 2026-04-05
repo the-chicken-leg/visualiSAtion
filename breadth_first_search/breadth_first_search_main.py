@@ -1,11 +1,7 @@
-import os, sys
-sys.path.insert(1, os.path.join(os.getcwd()))
-sys.path.insert(1, os.path.join(os.getcwd(), "common"))
-
+from .breadth_first_search_matrix import BFSMatrix
 from common.graphics import Window
-from bfs_matrix import BFSMatrix
 
-def main():
+def run_breadth_first_search():
     # tuneables
     window_width = 800
     window_height = 800
@@ -20,6 +16,3 @@ def main():
     bfs_matrix = BFSMatrix(window, cell_size, smooth_cell_creation)
     bfs_matrix.search(start_i, start_j, sleep_time, show_numbers)
     window.wait_for_close()
-
-if __name__ == "__main__":
-    main()

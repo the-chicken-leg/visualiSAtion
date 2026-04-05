@@ -1,11 +1,7 @@
-import os, sys
-sys.path.insert(1, os.path.join(os.getcwd()))
-sys.path.insert(1, os.path.join(os.getcwd(), "common"))
-
+from .bubbles import Bubbles
 from common.graphics import Window
-from bubbles import Bubbles
 
-def main():
+def run_bubble_sort():
     # tuneables
     window_width = 800
     window_height = 800
@@ -18,6 +14,3 @@ def main():
     bubbles = Bubbles(window, thing_width, value_order, custom_values)
     bubbles.sort(sleep_time)
     window.wait_for_close()
-
-if __name__ == "__main__":
-    main()

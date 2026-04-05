@@ -1,5 +1,6 @@
-from cell import *
 import time
+
+from .cell import *
 
 class CellMatrix:
     def __init__(self, window: Window, cell_size: int, smooth_cell_creation: bool):

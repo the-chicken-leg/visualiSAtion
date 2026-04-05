@@ -1,6 +1,7 @@
-from sort_thing import *
 import time
 import random
+
+from .sort_thing import *
 
 class ThingsToSort:
     def __init__(self, window: Window, thing_width: int, data_order: str, custom_values = list):

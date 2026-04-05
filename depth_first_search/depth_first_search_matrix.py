@@ -1,7 +1,8 @@
-from common.graphics import *
-from common.cell_matrix import *
 import random
 import time
+
+from common.graphics import *
+from common.cell_matrix import *
 
 class DFSMatrix(CellMatrix):
     def search(self, start_i: int, start_j: int, sleep_time: float, is_random: bool, seed):

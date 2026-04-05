@@ -1,4 +1,4 @@
-from graphics import *
+from .graphics import *
 
 class Cell(Square):
     def __init__(self, i: int, j: int, center: Point):

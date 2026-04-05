@@ -1,6 +1,7 @@
+import time
+
 from common.graphics import *
 from common.cell_matrix import *
-import time
 
 class BFSMatrix(CellMatrix):
     def search(self, start_i: int, start_j: int, sleep_time: float, show_numbers: bool):

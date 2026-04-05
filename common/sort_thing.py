@@ -1,5 +1,6 @@
-from graphics import *
 import functools
+
+from .graphics import *
 
 @functools.total_ordering
 class SortThing(Rectangle):

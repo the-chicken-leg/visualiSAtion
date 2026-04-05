@@ -1,11 +1,9 @@
-import os, sys
-sys.path.insert(1, os.path.join(os.getcwd()))
-sys.path.insert(1, os.path.join(os.getcwd(), "common"))
+import sys
 
+from .depth_first_search_matrix import DFSMatrix
 from common.graphics import Window
-from dfs_matrix import DFSMatrix
 
-def main():
+def run_depth_first_search():
     # tuneables
     window_width = 800
     window_height = 800
@@ -22,6 +20,3 @@ def main():
     dfs_matrix = DFSMatrix(window, cell_size, smooth_cell_creation)
     dfs_matrix.search(start_i, start_j, sleep_time, is_random, seed)
     window.wait_for_close()
-
-if __name__ == "__main__":
-    main()
