@@ -1,10 +1,7 @@
-import os, sys
-sys.path.insert(1, os.path.join(os.getcwd()))
-
+from .rb_tree import RBTree
 from common.graphics import Window
-from rb_tree import RBTree
 
-def main():
+def run_red_black_tree():
     # tuneables
     window_width = 1500
     window_height = 500
@@ -18,6 +15,3 @@ def main():
     rb_tree = RBTree(insertion_type, num_nodes, custom_insertion)
     rb_tree.draw_in_window(window, step_manually, sleep_time)
     window.wait_for_close()
-
-if __name__ == "__main__":
-    main()

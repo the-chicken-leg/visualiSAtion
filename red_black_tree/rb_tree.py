@@ -1,6 +1,7 @@
-from rb_node import *
 import random
 import time
+
+from .rb_node import *
 
 class RBTree:
     def __init__(self, insertion_type: str, num_nodes: int, custom_insertion: list):
