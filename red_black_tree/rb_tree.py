@@ -1,7 +1,8 @@
 import random
 import time
 
-from .rb_node import *
+from .rb_node import RBNode
+from common.graphics import Text, Point, CanvasButton, Window
 
 class RBTree:
     def __init__(self, insertion_type: str, num_nodes: int, custom_insertion: list):
