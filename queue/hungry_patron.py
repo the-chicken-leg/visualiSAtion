@@ -1,6 +1,6 @@
 import random
 
-from common.graphics import *
+from common.graphics import Rectangle, Window, Point
 
 class HungryPatron(Rectangle):
     def draw(self, window: Window, center: Point, patron_fatbody_width: int):

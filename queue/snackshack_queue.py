@@ -1,6 +1,8 @@
 import random
+import time
 
-from .hungry_patron import *
+from .hungry_patron import HungryPatron
+from common.graphics import Window, Point
 
 class SnackshackQueue:
     def __init__(self, starting_num_patrons: int, push_pop_ratio: float, stop_when_empty: bool):

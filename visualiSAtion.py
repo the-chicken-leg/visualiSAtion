@@ -5,7 +5,7 @@ from bubble_sort import run_bubble_sort
 from depth_first_search import run_depth_first_search
 from insertion_sort import run_insertion_sort
 from merge_sort import run_merge_sort
-from queue.queue_main import run_queue
+from queue import run_queue
 from quick_sort.quick_sort_main import run_quick_sort
 from red_black_tree.red_black_tree_main import run_red_black_tree
 from selection_sort.selection_sort_main import run_selection_sort
