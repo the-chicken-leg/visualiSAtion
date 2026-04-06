@@ -36,15 +36,15 @@ uv run .\visualiSAtion.py breadth_first_search
 
 ## Depth-first search random
 
-![dfs random gif](/media/dfs_random.gif)
+![dfs random gif](/media/depth_first_search_random.gif)
 
 ## Depth-first search non-random
 
-![dfs non-random gif](/media/dfs_nonrandom.gif)
+![dfs non-random gif](/media/depth_first_search_nonrandom.gif)
 
 ## Breadth-first search
 
-![bfs gif](/media/bfs.gif)
+![bfs gif](/media/breadth_first_search.gif)
 
 ## Stack
 
