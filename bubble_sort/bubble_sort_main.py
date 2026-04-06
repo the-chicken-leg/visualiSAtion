@@ -1,5 +1,5 @@
 from .bubbles import Bubbles
-from common import graphics as gr
+from common.graphics import Window
 
 def run_bubble_sort():
     # tuneables
@@ -10,7 +10,7 @@ def run_bubble_sort():
     custom_values = [100, 700, 200, 600, 300, 500, 400, 150, 50, 250, 650, 350, 550, 450]    # ignored if not "custom" value_order, values measured in pixels, min=50, max=window_height-100
     sleep_time = 0.04
 
-    window = gr.Window(window_width, window_height)
+    window = Window(window_width, window_height)
     bubbles = Bubbles(window, thing_width, value_order, custom_values)
     bubbles.sort(sleep_time)
     window.wait_for_close()
