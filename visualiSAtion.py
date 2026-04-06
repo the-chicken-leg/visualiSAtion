@@ -9,7 +9,7 @@ from queue_ds import run_queue_ds
 from quick_sort import run_quick_sort
 from red_black_tree import run_red_black_tree
 from selection_sort import run_selection_sort
-from stack.stack_main import run_stack
+from stack import run_stack
 
 DISPATCH = {
     "breadth_first_search": run_breadth_first_search,

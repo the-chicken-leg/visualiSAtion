@@ -1,9 +1,9 @@
 import random
 
-from common.graphics import *
+from common import graphics as gr
 
-class Dish(Rectangle):
-    def draw(self, window: Window, center: Point, single_dish_height: int):
+class Dish(gr.Rectangle):
+    def draw(self, window: gr.Window, center: gr.Point, single_dish_height: int):
         x_length = window.width - (window.width * 0.5)
 
         red = "%02x" % random.randint(0, 255)
