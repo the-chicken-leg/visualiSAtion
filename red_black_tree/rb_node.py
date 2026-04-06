@@ -1,6 +1,6 @@
-from common.graphics import Circle, Window, Point, Text, SolidLine
+from common import graphics as gr
 
-class RBNode(Circle):
+class RBNode(gr.Circle):
     def __init__(self, value: int):
         super().__init__(tags=["nodes", "tree"])
 
@@ -11,19 +11,19 @@ class RBNode(Circle):
         self.left_child = None
         self.right_child = None
 
-    def draw_tree(self, window: Window):
+    def draw_tree(self, window: gr.Window):
         self.window = window
         cell_size = 50
-        root_center = Point(window.width / 2, cell_size / 2 + 100)
+        root_center = gr.Point(window.width / 2, cell_size / 2 + 100)
 
         self.draw_nodes(window, cell_size, root_center, self.value)
         self.draw_lines()
 
     def draw_nodes(
         self,
-        window: Window,
+        window: gr.Window,
         cell_size: int,
-        root_center: Point,
+        root_center: gr.Point,
         root_value: int,
         level: int = 0,
     ):
@@ -32,13 +32,13 @@ class RBNode(Circle):
 
             self.node_center_x = root_center.x + cell_size * (self.value - root_value)
             self.node_center_y = root_center.y + (cell_size * level)
-            self.draw(window, Point(self.node_center_x, self.node_center_y))
-            node_text = Text(str(self.value), tags=["text", "tree"])
-            node_text.draw(window, Point(self.node_center_x, self.node_center_y), fill_color="white")
+            self.draw(window, gr.Point(self.node_center_x, self.node_center_y))
+            node_text = gr.Text(str(self.value), tags=["text", "tree"])
+            node_text.draw(window, gr.Point(self.node_center_x, self.node_center_y), fill_color="white")
 
             self.left_child.draw_nodes(window, cell_size, root_center, root_value, level + 1)
 
-    def draw(self, window: Window, center: Point):
+    def draw(self, window: gr.Window, center: gr.Point):
         fill_color = "black"
         if self.red:
             fill_color = "red"
@@ -47,19 +47,19 @@ class RBNode(Circle):
     def draw_lines(self):
         for rb_node in self.traverse_preorder([], False):
             if rb_node.left_child.value:
-                line_to_left_child = SolidLine(tags=["lines", "tree"])
+                line_to_left_child = gr.SolidLine(tags=["lines", "tree"])
                 line_to_left_child.draw(
                     self.window,
-                    Point(rb_node.node_center_x, rb_node.node_center_y),
-                    Point(rb_node.left_child.node_center_x, rb_node.left_child.node_center_y),
+                    gr.Point(rb_node.node_center_x, rb_node.node_center_y),
+                    gr.Point(rb_node.left_child.node_center_x, rb_node.left_child.node_center_y),
                 )
 
             if rb_node.right_child.value:
-                line_to_right_child = SolidLine(tags=["lines", "tree"])
+                line_to_right_child = gr.SolidLine(tags=["lines", "tree"])
                 line_to_right_child.draw(
                     self.window,
-                    Point(rb_node.node_center_x, rb_node.node_center_y),
-                    Point(rb_node.right_child.node_center_x, rb_node.right_child.node_center_y),
+                    gr.Point(rb_node.node_center_x, rb_node.node_center_y),
+                    gr.Point(rb_node.right_child.node_center_x, rb_node.right_child.node_center_y),
                 )
 
         self.window.canvas.tag_lower("lines", "text")

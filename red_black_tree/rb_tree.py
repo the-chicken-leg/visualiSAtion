@@ -2,7 +2,7 @@ import random
 import time
 
 from .rb_node import RBNode
-from common.graphics import Text, Point, CanvasButton, Window
+from common import graphics as gr
 
 class RBTree:
     def __init__(self, insertion_type: str, num_nodes: int, custom_insertion: list):
@@ -25,22 +25,22 @@ class RBTree:
         elif self.insertion_type == "custom":
             self.node_values = self.custom_insertion
 
-    def draw_in_window(self, window: Window, step_manually: bool, sleep_time: float):
+    def draw_in_window(self, window: gr.Window, step_manually: bool, sleep_time: float):
         self.window = window
         self.step_manually = step_manually
         self.sleep_time = sleep_time
 
-        insertion_order = Text(f"Insertion order: {str(self.node_values).strip("[]")}")
-        insertion_order.draw(window, Point(window.width / 2, 25))
+        insertion_order = gr.Text(f"Insertion order: {str(self.node_values).strip("[]")}")
+        insertion_order.draw(window, gr.Point(window.width / 2, 25))
 
         if self.step_manually:
-            forward_button = CanvasButton(window, "Forward", self.step_forward, ["buttons"])
+            forward_button = gr.CanvasButton(window, "Forward", self.step_forward, ["buttons"])
             window.root.bind("<Right>", lambda x: forward_button.button.invoke())
-            forward_button.draw(Point(window.width / 2 + 50, window.height - 25))
+            forward_button.draw(gr.Point(window.width / 2 + 50, window.height - 25))
             
-            back_button = CanvasButton(window, "Back", self.step_back, ["buttons"])
+            back_button = gr.CanvasButton(window, "Back", self.step_back, ["buttons"])
             window.root.bind("<Left>", lambda x: back_button.button.invoke())
-            back_button.draw(Point(window.width / 2 - 50, window.height - 25))
+            back_button.draw(gr.Point(window.width / 2 - 50, window.height - 25))
 
             self.node_index = 1
             self.should_fix = False
@@ -104,8 +104,8 @@ class RBTree:
 
     def draw(self, node_value: int, insert_or_fix: str):
         self.window.canvas.delete("action", "tree")
-        action = Text(f"{insert_or_fix} {node_value}",tags=["action"])
-        action.draw(self.window, Point(self.window.width / 2, 75))
+        action = gr.Text(f"{insert_or_fix} {node_value}",tags=["action"])
+        action.draw(self.window, gr.Point(self.window.width / 2, 75))
         self.root_node.draw_tree(self.window)
         if not self.step_manually:
             self.window.redraw()

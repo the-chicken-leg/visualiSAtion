@@ -1,6 +1,6 @@
 import time
 
-from common.graphics import Text
+from common import graphics as gr
 from common.cell_matrix import CellMatrix
 
 class BFSMatrix(CellMatrix):
@@ -24,7 +24,7 @@ class BFSMatrix(CellMatrix):
             
             if show_numbers:
                 for neighbor in neighbors_to_search:
-                    neighbor.search_num_text = Text(str(search_num))
+                    neighbor.search_num_text = gr.Text(str(search_num))
                     neighbor.search_num_text.draw(self.window, neighbor.center)
                     self.window.redraw()
                     time.sleep(sleep_time)

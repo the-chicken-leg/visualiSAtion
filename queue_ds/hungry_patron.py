@@ -1,9 +1,9 @@
 import random
 
-from common.graphics import Rectangle, Window, Point
+from common import graphics as gr
 
-class HungryPatron(Rectangle):
-    def draw(self, window: Window, center: Point, patron_fatbody_width: int):
+class HungryPatron(gr.Rectangle):
+    def draw(self, window: gr.Window, center: gr.Point, patron_fatbody_width: int):
         self.window = window
         self.center = center
         self.patron_fatbody_width = patron_fatbody_width
@@ -18,5 +18,5 @@ class HungryPatron(Rectangle):
         super().draw(window, center, patron_fatbody_width, self.y_length, self.fill_color)
 
     def move_up_in_line(self):
-        self.center = Point(self.center.x + self.patron_fatbody_width, self.center.y)
+        self.center = gr.Point(self.center.x + self.patron_fatbody_width, self.center.y)
         super().draw(self.window, self.center, self.patron_fatbody_width, self.y_length, self.fill_color)

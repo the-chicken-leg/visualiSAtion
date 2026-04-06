@@ -1,7 +1,7 @@
 import random
 import time
 
-from common.graphics import Circle, SolidLine
+from common import graphics as gr
 from common.cell_matrix import CellMatrix
 from common.cell import Cell
 
@@ -21,11 +21,11 @@ class DFSMatrix(CellMatrix):
             current_cell.searched = True
             current_cell.draw(self.window, self.cell_size)
             if current_cell.i == self.start_i and current_cell.j == self.start_j:
-                start_end_point = Circle()
+                start_end_point = gr.Circle()
                 start_end_point.draw(self.window, current_cell.center, 10, "lime green")
             if direction and first_pass:
                 previous_cell = self.get_previous_cell(current_cell.i, current_cell.j, direction)
-                track_up_stack = SolidLine()
+                track_up_stack = gr.SolidLine()
                 track_up_stack.draw(self.window, current_cell.center, previous_cell.center)
             self.window.redraw()
             time.sleep(self.sleep_time)
@@ -39,7 +39,7 @@ class DFSMatrix(CellMatrix):
                 return
             
             if not first_pass:
-                breadth_marker = Circle()
+                breadth_marker = gr.Circle()
                 breadth_marker.draw(self.window, current_cell.center, 10)
                 self.window.redraw()
 
