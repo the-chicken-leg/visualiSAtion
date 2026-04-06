@@ -6,7 +6,7 @@ from depth_first_search import run_depth_first_search
 from insertion_sort import run_insertion_sort
 from merge_sort import run_merge_sort
 from queue_ds import run_queue_ds
-from quick_sort.quick_sort_main import run_quick_sort
+from quick_sort import run_quick_sort
 from red_black_tree.red_black_tree_main import run_red_black_tree
 from selection_sort.selection_sort_main import run_selection_sort
 from stack.stack_main import run_stack

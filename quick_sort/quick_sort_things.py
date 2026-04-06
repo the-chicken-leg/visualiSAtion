@@ -1,4 +1,6 @@
-from common.things_to_sort import *
+import time
+
+from common.things_to_sort import ThingsToSort
 
 class QuickSortThings(ThingsToSort):
     def sort(self, sleep_time: float):
