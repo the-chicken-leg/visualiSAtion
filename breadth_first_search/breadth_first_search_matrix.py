@@ -1,7 +1,7 @@
 import time
 
-from common.graphics import *
-from common.cell_matrix import *
+from common import graphics as gr
+from common.cell_matrix import CellMatrix
 
 class BFSMatrix(CellMatrix):
     def search(self, start_i: int, start_j: int, sleep_time: float, show_numbers: bool):
@@ -18,13 +18,13 @@ class BFSMatrix(CellMatrix):
             neighbors = self.get_cell_neighbors(current_cell.i, current_cell.j)
             neighbors_to_search = [v for v in neighbors.values() if (
                 v 
-                and v.searched == False 
+                and not v.searched 
                 and v not in to_search
             )]
             
             if show_numbers:
                 for neighbor in neighbors_to_search:
-                    neighbor.search_num_text = Text(str(search_num))
+                    neighbor.search_num_text = gr.Text(str(search_num))
                     neighbor.search_num_text.draw(self.window, neighbor.center)
                     self.window.redraw()
                     time.sleep(sleep_time)

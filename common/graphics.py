@@ -1,4 +1,4 @@
-from tkinter import *
+import tkinter as tk
 from tkinter import ttk
 import time
 
@@ -7,11 +7,11 @@ class Window:
         self.width = width
         self.height = height
 
-        self.root = Tk()
+        self.root = tk.Tk()
         self.root.title("visualiSAtion!")
-        self.root.resizable(0, 0)
+        self.root.resizable(False, False)
 
-        self.canvas = Canvas(self.root, width=self.width, height=self.height)
+        self.canvas = tk.Canvas(self.root, width=self.width, height=self.height)
         self.canvas.pack()
 
         self.is_window_running = False
@@ -41,7 +41,7 @@ class CanvasButton:
         parent: Window,
         text: str,
         command,
-        tags: list = None,
+        tags: list = [],
     ):
         self.parent = parent
         self.tags = tags
@@ -56,7 +56,7 @@ class CanvasButton:
         )
 
 class SolidLine:
-    def __init__(self, tags: list = None):
+    def __init__(self, tags: list = []):
         self.tags = tags
 
     def draw(
@@ -78,7 +78,7 @@ class SolidLine:
         )
 
 class DashedLine:
-    def __init__(self, tags: list = None):
+    def __init__(self, tags: list = []):
         self.tags = tags
 
     def draw(
@@ -101,7 +101,7 @@ class DashedLine:
         )
 
 class Rectangle:
-    def __init__(self, tags: list = None):
+    def __init__(self, tags: list = []):
         self.tags = tags
 
     def draw(
@@ -124,7 +124,7 @@ class Rectangle:
         )
 
 class Square:
-    def __init__(self, tags: list = None):
+    def __init__(self, tags: list = []):
         self.tags = tags
 
     def draw(
@@ -146,7 +146,7 @@ class Square:
         )
 
 class Circle:
-    def __init__(self, tags: list = None):
+    def __init__(self, tags: list = []):
         self.tags = tags
 
     def draw(
@@ -168,7 +168,7 @@ class Circle:
         )
 
 class BigX:
-    def __init__(self, tags: list = None):
+    def __init__(self, tags: list = []):
         self.tags = tags
 
     def draw(
@@ -191,7 +191,7 @@ class BigX:
         self.id_back_slash = back_slash.draw(parent, top_left, bottom_right, fill_color, width)
 
 class Triangle:
-    def __init__(self, tags: list = None):
+    def __init__(self, tags: list = []):
         self.tags = tags
 
     def draw(
@@ -216,7 +216,7 @@ class Triangle:
         )
 
 class Text:
-    def __init__(self, text: str, tags: list = None):
+    def __init__(self, text: str, tags: list = []):
         self.text = text
         self.tags = tags
 

@@ -1,9 +1,10 @@
 import time
 
-from .cell import *
+from . import graphics as gr
+from .cell import Cell
 
 class CellMatrix:
-    def __init__(self, window: Window, cell_size: int, smooth_cell_creation: bool):
+    def __init__(self, window: gr.Window, cell_size: int, smooth_cell_creation: bool):
         self.window = window
         self.cell_size = cell_size
 
@@ -19,7 +20,7 @@ class CellMatrix:
             center_y = y_border + (0.5 * cell_size) + (i * cell_size)
             for j in range(self.num_columns):
                 center_x = x_border + (0.5 * cell_size) + (j * cell_size)
-                cell = Cell(i, j, Point(center_x, center_y))
+                cell = Cell(i, j, gr.Point(center_x, center_y))
                 row.append(cell)
             self.cell_matrix.append(row)
 

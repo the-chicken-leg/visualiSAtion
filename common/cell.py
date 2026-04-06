@@ -1,7 +1,7 @@
-from .graphics import *
+from . import graphics as gr
 
-class Cell(Square):
-    def __init__(self, i: int, j: int, center: Point):
+class Cell(gr.Square):
+    def __init__(self, i: int, j: int, center: gr.Point):
         super().__init__()
 
         self.i = i
@@ -9,7 +9,7 @@ class Cell(Square):
         self.center = center
         self.searched = False
 
-    def draw(self, window: Window, cell_size: int):
+    def draw(self, window: gr.Window, cell_size: int):
         fill_color = "white"
         if self.searched:
             fill_color = "gray"
