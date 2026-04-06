@@ -1,7 +1,7 @@
 from .snackshack_queue import SnackshackQueue
 from common.graphics import Window
 
-def run_queue():
+def run_queue_ds():
     # tuneables
     window_width = 800
     window_height = 800
