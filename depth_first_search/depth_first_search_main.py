@@ -1,7 +1,7 @@
 import sys
 
 from .depth_first_search_matrix import DFSMatrix
-from common.graphics import Window
+from common import graphics as gr
 
 def run_depth_first_search():
     # tuneables
@@ -16,7 +16,7 @@ def run_depth_first_search():
     seed = None         # ignored if is_random is False
 
     sys.setrecursionlimit(10000)
-    window = Window(window_width, window_height)
+    window = gr.Window(window_width, window_height)
     dfs_matrix = DFSMatrix(window, cell_size, smooth_cell_creation)
     dfs_matrix.search(start_i, start_j, sleep_time, is_random, seed)
     window.wait_for_close()

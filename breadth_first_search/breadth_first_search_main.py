@@ -1,5 +1,5 @@
 from .breadth_first_search_matrix import BFSMatrix
-from common.graphics import Window
+from common import graphics as gr
 
 def run_breadth_first_search():
     # tuneables
@@ -12,7 +12,7 @@ def run_breadth_first_search():
     sleep_time = 0.05
     show_numbers = True
 
-    window = Window(window_width, window_height)
+    window = gr.Window(window_width, window_height)
     bfs_matrix = BFSMatrix(window, cell_size, smooth_cell_creation)
     bfs_matrix.search(start_i, start_j, sleep_time, show_numbers)
     window.wait_for_close()
