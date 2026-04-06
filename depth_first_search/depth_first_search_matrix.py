@@ -1,8 +1,9 @@
 import random
 import time
 
-from common.graphics import *
-from common.cell_matrix import *
+from common import graphics as gr
+from common.cell_matrix import CellMatrix
+from common.cell import Cell
 
 class DFSMatrix(CellMatrix):
     def search(self, start_i: int, start_j: int, sleep_time: float, is_random: bool, seed):
@@ -14,23 +15,23 @@ class DFSMatrix(CellMatrix):
             random.seed(seed)
         self.search_r(self.cell_matrix[start_i][start_j])
 
-    def search_r(self, current_cell: Cell, direction: str = None):
+    def search_r(self, current_cell: Cell, direction: str = ""):
         first_pass = True
         while True:
             current_cell.searched = True
             current_cell.draw(self.window, self.cell_size)
             if current_cell.i == self.start_i and current_cell.j == self.start_j:
-                start_end_point = Circle()
+                start_end_point = gr.Circle()
                 start_end_point.draw(self.window, current_cell.center, 10, "lime green")
             if direction and first_pass:
                 previous_cell = self.get_previous_cell(current_cell.i, current_cell.j, direction)
-                track_up_stack = SolidLine()
+                track_up_stack = gr.SolidLine()
                 track_up_stack.draw(self.window, current_cell.center, previous_cell.center)
             self.window.redraw()
             time.sleep(self.sleep_time)
 
             neighbors = self.get_cell_neighbors(current_cell.i, current_cell.j)
-            to_search = [k for k, v in neighbors.items() if v and v.searched == False]
+            to_search = [k for k, v in neighbors.items() if v and not v.searched]
             if not to_search:
                 if first_pass:
                     current_cell.draw(self.window, self.cell_size)
@@ -38,7 +39,7 @@ class DFSMatrix(CellMatrix):
                 return
             
             if not first_pass:
-                breadth_marker = Circle()
+                breadth_marker = gr.Circle()
                 breadth_marker.draw(self.window, current_cell.center, 10)
                 self.window.redraw()
 
