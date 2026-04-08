@@ -24,10 +24,7 @@ DISPATCH = {
     "stack": run_stack,
 }
 
-parser = argparse.ArgumentParser(
-    prog="visualiSAtion.py",
-    description="visualiSAtion of (data) Structures and Algorithms",
-)
+parser = argparse.ArgumentParser()
 parser.add_argument(
     "dsa",
     choices=DISPATCH.keys(),
